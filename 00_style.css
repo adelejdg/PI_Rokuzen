@@ -18,19 +18,24 @@ header {
     width: 300px;
 }
 
+.nav-item{
+    margin: 20px 20px 0 0;
+}
+
 nav{
     padding-left: 40px;
     font-weight: 600;
 }
 
-nav a{   
+nav span a{   
     text-decoration: none;
     color: yellowgreen;
+    /* margin: 20px 40px 10px 0; */
 }
 
 nav span{
-    display: block;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 nav a:hover{
@@ -39,6 +44,7 @@ nav a:hover{
 
 #icones {
     width: 400px;
+    margin-top: 10px;
 }
 
 #icones a {
@@ -46,38 +52,24 @@ nav a:hover{
 }
 
 #icones img{
-    width: 8%;
-    height: 8%;
+    width: 6%;
+    height: 6%;
 }
 
-/*
-main {
-    background-color: rgb(180, 180, 180);
-    width: 100%;
-    padding: 10px;
-    margin: auto;
-}
-*/
-/*
-.icon {
-    width: 8%;
-    height: 22%; 
-    margin-right: 8px;
+.dropdown {
+  position: relative;
 }
 
-
-/* #barraDePesquisa {
-    border-radius: 20px;
-    border-style: solid;
-    border-color: rgb(73, 73, 73);
-    width: 400px;
-    height: 30px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(161, 161, 161);
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 230px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  text-decoration: none;
 }
 
-#labelPesquisa {
-    height: 30px;
-    grid-column: 2;
-    grid-row: 2;
-} */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
