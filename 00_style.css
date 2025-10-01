@@ -1,18 +1,25 @@
+ * h3{
+    font-family: "Kalam", cursive;
+    color: rgb(27, 59, 0);
+    font-size: xx-large;
+ }
+
  body{
     background-image: linear-gradient(#cffc7b 2%, gainsboro 40%);
     margin: auto;
     font-family: system-ui;
 }
 
-
+/*cabeçalho////////////////////////////////////////////////////////////////////////////////////////////*/
 header {
     background-color: white;
     width: 100%;
     height: 100px;
     padding: 15px 0 10px 20px;
     margin: auto;
+    margin-top: 10px;
     display: inline-flex;
-    position: fixed;
+    /* position: fixed; */
 }
 
 #logoRokuzen {
@@ -65,20 +72,21 @@ nav a:hover{
 .dropdown-conteudo {
   display: none;
   position: absolute;
-  background-color: #f9f9f960;
+  background-color: #f3f3f394;
   min-width: 190px;
-  box-shadow: 0px 8px 16px 0px rgba(21, 105, 28, 0.493);
+  box-shadow: 0px 8px 16px 0px rgba(10, 71, 15, 0.493);
   padding: 12px 16px;
   line-height: 35px;
+  
 }
 
 .dropdown:hover .dropdown-conteudo {
   display: block;
 }
 
+/* principal////////////////////////////////////////////////////////////////////////////////////// */
 main{ 
     height: 900px;
-    margin-top: 5px;
     width: 100%;
 }
 
@@ -87,7 +95,96 @@ main{
     flex-wrap: wrap;
 }
 
+.caixa-inicio{
+    padding-top: 40px;
+    margin: 0 auto;
+    display: grid;
+    width: 300px;
+}
+
 .caixa-inicio img{
-    width: 15%;
-    height: 15%;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.caixa-inicio img:hover{
+    transform: scale(1.3);
+}
+
+.caixa-inicio h3{
+    margin: 0 auto;
+    text-align: center;
+    
+}
+
+.caixa-inicio p{
+    margin: 0 auto;
+    text-align: center;
+    line-height: 25px;
+    color: rgb(27, 59, 0)
+}
+
+.caixa-inicio button{
+    border-style: outset;
+    border-color: rgb(45, 85, 0);
+    border-radius: 5px;
+    background-image: linear-gradient(yellowgreen, darkgreen);
+    color: white;
+    height: 30px;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.caixa-inicio button:hover{
+    border-style: inset;
+    border-color: rgb(45, 85, 0);
+    border-radius: 5px;
+    background-image: linear-gradient(rgb(131, 179, 35), rgb(0, 71, 30));
+    color: rgb(216, 216, 216);
+}
+
+/* rodapé//////////////////////////////////////////////////////////////////////////////////////// */
+#rodape1{
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+    background-color: #232729;
+    color: white !important; 
+}
+
+#rodape1 h3{
+    color: white;
+}
+
+#rdp-pesquisa{
+    width: 33%;
+}
+
+#rdp-pesquisa button{
+    border-width: 2px;
+    background-image: linear-gradient(gray, rgb(75, 75, 75));
+    border-color: black;
+}
+
+#barra-pesquisa{
+    width: 250px;
+    border-style: outset;
+}
+
+#rdp-unidades{
+    line-height: 2px;
+    width: 33%;
+}
+
+#rdp-unidades h3{
+    margin-bottom: 50px; 
+}
+
+#rdp-tags{
+    width: 33%;
 }
