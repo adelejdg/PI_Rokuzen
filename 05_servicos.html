@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Serviços</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #e6f5e6; padding: 24px; }
+    .container { background: #fff; max-width: 980px; margin: auto; padding: 24px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+    h2 { color: #1B5E20; margin: 0 0 16px 0; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .card { border: 1px solid #cfe6c5; border-radius: 10px; padding: 16px; text-align: center; cursor: pointer; }
+    .card.selected { outline: 3px solid #8BC34A; }
+    .section { margin: 24px 0; }
+    .dots { display: flex; gap: 10px; }
+    .dot { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #cfd8dc; cursor: pointer; }
+    .dot.green { background: #66bb6a; }
+    .dot.red { background: #ef5350; cursor: not-allowed; }
+    .dot.yellow { background: #fdd835; cursor: not-allowed; }
+    .dot.selected { box-shadow: 0 0 0 4px rgba(139,195,74,0.25); }
+    .dur-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .dur { border: 1px solid #cfe6c5; border-radius: 10px; padding: 16px; text-align: center; cursor: pointer; }
+    .dur.selected { outline: 3px solid #8BC34A; }
+    .summary { margin-top: 20px; font-weight: 600; color: #2e7d32; }
+    .back { display: inline-block; margin-bottom: 12px; padding: 10px 14px; background: #d6edc2; border-radius: 8px; text-decoration: none; color: #1B5E20; }
+    .hidden { display: none; }
+    .section h3 { margin: 0 0 10px 0; color: #2e7d32; }
+    .btn-primary { padding: 12px 16px; background: #8BC34A; color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 700; }
+    .btn-primary:hover { background: #7DB343; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const params = new URLSearchParams(window.location.search);
+      const nome = params.get('nome');
+      const horario = params.get('horario');
+      const summary = document.getElementById('summary');
+      const pkg4 = document.getElementById('pacote4');
+      const pkg8 = document.getElementById('pacote8');
+      const finalizarBtn = document.getElementById('btn-finalizar');
+      function updateSummary() {
+        const serv = document.querySelector('.card.selected')?.textContent || '';
+        const eq = document.querySelector('.dot.selected')?.dataset.label || '';
+        const dur = document.querySelector('.dur.selected')?.textContent || '';
+        const dur4 = document.querySelector('.dur4.selected')?.textContent || '';
+        const dur8 = document.querySelector('.dur8.selected')?.textContent || '';
+        summary.textContent = `Profissional: ${nome || '-'} | Horário: ${horario || '-'} | Serviço: ${serv || '-'} | Equipamento: ${eq || '-'} | Duração: ${dur || '-'} | Pacote 4: ${dur4 || '—'} | Pacote 8: ${dur8 || '—'}`;
+      }
+
+      // Serviços
+      document.querySelectorAll('.card').forEach(el => {
+        el.addEventListener('click', function () {
+          document.querySelectorAll('.card.selected').forEach(c => c.classList.remove('selected'));
+          el.classList.add('selected');
+          document.getElementById('equipamentos').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          updateSummary();
+        });
+      });
+
+      // Dots (equipamentos)
+      document.querySelectorAll('.dot').forEach(el => {
+        el.addEventListener('click', function () {
+          if (el.classList.contains('red')) { alert('Equipamento indisponível.'); return; }
+          if (el.classList.contains('yellow')) { alert('Equipamento em manutenção.'); return; }
+          document.querySelectorAll('.dot.selected').forEach(d => d.classList.remove('selected'));
+          el.classList.add('selected');
+          document.getElementById('duracao').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          updateSummary();
+        });
+      });
+
+      // Durações
+      document.querySelectorAll('.dur').forEach(el => {
+        el.addEventListener('click', function () {
+          document.querySelectorAll('.dur.selected').forEach(d => d.classList.remove('selected'));
+          el.classList.add('selected');
+          // revelar pacotes opcionais
+          pkg4.classList.remove('hidden');
+          pkg8.classList.remove('hidden');
+          updateSummary();
+        });
+      });
+
+      // Seleção de pacotes opcionais (4 e 8 sessões)
+      document.querySelectorAll('.dur4').forEach(el => {
+        el.addEventListener('click', function () {
+          document.querySelectorAll('.dur4.selected').forEach(d => d.classList.remove('selected'));
+          el.classList.add('selected');
+          updateSummary();
+        });
+      });
+
+      document.querySelectorAll('.dur8').forEach(el => {
+        el.addEventListener('click', function () {
+          document.querySelectorAll('.dur8.selected').forEach(d => d.classList.remove('selected'));
+          el.classList.add('selected');
+          updateSummary();
+        });
+      });
+
+      // Finalizar
+      finalizarBtn.addEventListener('click', function () {
+        const serv = document.querySelector('.card.selected')?.textContent;
+        const eq = document.querySelector('.dot.selected')?.dataset.label;
+        const dur = document.querySelector('.dur.selected')?.textContent;
+        if (!serv || !eq || !dur) { alert('Selecione serviço, equipamento (verde) e duração avulsa.'); return; }
+        const dur4 = document.querySelector('.dur4.selected')?.textContent || null;
+        const dur8 = document.querySelector('.dur8.selected')?.textContent || null;
+        const payload = { nome, horario, servico: serv, equipamento: eq, duracaoAvulso: dur, pacote4: dur4, pacote8: dur8, timestamp: new Date().toISOString() };
+        localStorage.setItem('rokuzen_last_booking', JSON.stringify(payload));
+        window.location.href = '06_confirmacao.html';
+      });
+
+      updateSummary();
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="04_agendar.html">Voltar à grade</a>
+    <h2>Serviços</h2>
+    <div class="section" id="servicos">
+      <div class="grid">
+        <div class="card">Quick Massage</div>
+        <div class="card">Maca</div>
+        <div class="card">Reflexologia Podal</div>
+        <div class="card">Auriculoterapia</div>
+      </div>
+    </div>
+
+    <h2 id="equipamentos">Equipamentos disponíveis</h2>
+    <div class="section">
+      <div class="dots">
+        <div class="dot green" data-label="Verde 1"></div>
+        <div class="dot green" data-label="Verde 2"></div>
+        <div class="dot red" data-label="Vermelho 1"></div>
+        <div class="dot red" data-label="Vermelho 2"></div>
+        <div class="dot yellow" data-label="Amarelo"></div>
+      </div>
+    </div>
+
+    <h2 id="duracao">Duração (avulso)</h2>
+    <div class="section">
+      <div class="dur-grid">
+        <div class="dur">15 minutos</div>
+        <div class="dur">25 minutos</div>
+        <div class="dur">35 minutos</div>
+      </div>
+    </div>
+
+    <div id="pacote4" class="section hidden">
+      <h3>Pacote 4 sessões (opcional)</h3>
+      <div class="dur-grid">
+        <div class="dur dur4">15 minutos</div>
+        <div class="dur dur4">25 minutos</div>
+        <div class="dur dur4">35 minutos</div>
+      </div>
+    </div>
+
+    <div id="pacote8" class="section hidden">
+      <h3>Pacote 8 sessões (opcional)</h3>
+      <div class="dur-grid">
+        <div class="dur dur8">15 minutos</div>
+        <div class="dur dur8">25 minutos</div>
+        <div class="dur dur8">35 minutos</div>
+      </div>
+    </div>
+
+    <div id="summary" class="summary"></div>
+    <div class="section">
+      <button id="btn-finalizar" class="btn-primary">Finalizar</button>
+    </div>
+  </div>
+</body>
+</html>
+
+

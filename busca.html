@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Busca - Rokuzen</title>
+    <link rel="icon" href="mídias/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="00_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img src="mídias/cropped-logomarca_pequena2.png" id="logoRokuzen" alt="Logo Rokuzen">
+
+        <nav>
+            <div class="nav-top">
+                <div id="icones">
+                    <a href="https://rokuzen.com.br/feed/rss/" title="Assine nosso canal rss"><img src="mídias/icon-rss.png" class="icon" alt="rss"></a>
+                    <a href="mailto:contato@rokuzen.com.br" title="Email"><img src="mídias/icon-email.png" class="icon" alt="email"></a>
+                    <a href="https://www.facebook.com/rokuzen.massagem" title="Facebook"><img src="mídias/icon-fb.png" class="icon" alt="facebook"></a>
+                    <a href="https://www.instagram.com/rokuzen.massagem" title="Instagram"><img src="mídias/icon-insta.png" class="icon" alt="instagram"></a>
+                    <a href="https://www.linkedin.com/company/rokuzen?trk=top_nav_home" title="Linkedin"><img src="mídias/icon-linkedin.png" class="icon" alt="linkedin"></a>
+                </div>
+
+                <div id="header-pesquisa">
+                    <form action="/buscar" method="get">
+                        <input type="text" name="q" placeholder="Buscar..." />
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                    <span id="header-greeting"></span>
+                </div>
+            </div>
+
+            <span>
+                <a href="01_index.html">
+                    <div class="nav-item">
+                        <div class="dropdown">Quem somos <i class="fa fa-caret-down"></i>
+                            <div class="dropdown-conteudo">
+                                <a href="#">História</a><br>
+                                <a href="#">Missão, visão e valores</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="01_index.html">
+                    <div class="nav-item">
+                        <div class="dropdown">O que fazemos <i class="fa fa-caret-down"></i>
+                            <div class="dropdown-conteudo">
+                                <a href="#">Eventos / In-company</a><br>
+                                <a href="#">Serviços</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="01_index.html">
+                    <div class="nav-item">
+                        <div class="dropdown">Onde estamos <i class="fa fa-caret-down"></i>
+                            <div class="dropdown-conteudo">
+                                <a href="#">Unidades</a><br>
+                                <a href="#">Nossos clientes</a><br>
+                                <a href="#">Nossos parceiros</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="nav-item">|</div>
+
+                <a href="01_index.html"><div class="nav-item">Agende seu horário</div></a>
+
+                <a href="01_index.html">
+                    <div class="nav-item">
+                        <div class="dropdown"><span style="color: rgb(110, 47, 126);">Minha conta <i class="fa fa-caret-down" style="margin-left: 5px; line-height: 21px;"></i></span>
+                            <div class="dropdown-conteudo">
+                                <a href="#" class="btn-access-account">Acessar minha conta</a>
+                                <div class="login-cta-row">
+                                        <span class="muted-small">Não tem conta?</span>
+                                        <a href="#" class="link-start-here">Comece aqui</a>
+                                </div>
+                                <a href="02_meusdados.html" class="btn-access-account btn-block">Meus dados</a>
+                                <a href="03_meusagendamentos.html" class="btn-access-account btn-block">Meus agendamentos</a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </span>
+        </nav>
+    </header>
+
+    <main>
+        <div id="conteudo-main">
+            <div class="search-results">
+                <h2>Resultados da Busca</h2>
+                <p id="search-term">Buscando por: <strong></strong></p>
+                <div id="results-container">
+                    <p>Nenhum resultado encontrado para sua busca.</p>
+                    <p>Tente termos diferentes ou navegue pelas nossas seções.</p>
+                    
+                    <div class="search-suggestion">
+                        <h3>💡 Sugestões de busca:</h3>
+                        <p>• <a href="01_index.html" style="color: #8BC34A;">massagem</a> - Nossos serviços de massagem</p>
+                        <p>• <a href="01_index.html" style="color: #8BC34A;">shiatsu</a> - Técnica japonesa de massagem</p>
+                        <p>• <a href="01_index.html" style="color: #8BC34A;">relaxamento</a> - Sessões de relaxamento</p>
+                        <p>• <a href="01_index.html" style="color: #8BC34A;">agendamento</a> - Como agendar seu horário</p>
+                        <p>• <a href="01_index.html" style="color: #8BC34A;">unidades</a> - Nossas localizações</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="rodape1">
+            <div id="rdp-unidades">               
+                <h3>Unidades</h3>
+                <b><p>Golden Square Shopping - São Bernardo</p></b>
+                <p>WhatsApp: +55 11 9 4749 5306</p>
+                <br>
+                <b><p>Mooca Plaza Shopping</p></b>
+                <p>WhatsApp: +55 11 9 5084 1087</p>
+                <br>
+                <b><p>Grand Plaza Shopping - Santo André</p></b>
+                <p>WhatsApp: +55 11 91665 7900</p>
+                <br>
+                <b><p>Shopping West Plaza</p></b>
+                <p>WhatsApp: +55 11 9 1942 7901</p>
+            </div>
+            <div id="rdp-tags">
+                <h3>Tags</h3>
+                <a href="https://rokuzen.com.br/tag/ambientearomatizado/" class="tag-link-31 tag-link-position-1" title="1 tópico" style="font-size: 8pt;">ambientearomatizado</a>
+                <a href="https://rokuzen.com.br/tag/antistress/" class="tag-link-35 tag-link-position-2" title="1 tópico" style="font-size: 8pt;">antistress</a>
+                <a href="https://rokuzen.com.br/tag/aprender-massagem/" class="tag-link-99 tag-link-position-3" title="1 tópico" style="font-size: 8pt;">Aprender massagem</a>
+                <a href="https://rokuzen.com.br/tag/auriculoterapia/" class="tag-link-59 tag-link-position-4" title="2 tópicos" style="font-size: 11.6pt;">Auriculoterapia</a>
+                <a href="https://rokuzen.com.br/tag/bem-estar/" class="tag-link-10 tag-link-position-5" title="6 tópicos" style="font-size: 19pt;">bem-estar</a>
+                <a href="https://rokuzen.com.br/tag/cancer-de-mama/" class="tag-link-21 tag-link-position-6" title="1 tópico" style="font-size: 8pt;">cancer de mama</a>
+                <a href="https://rokuzen.com.br/tag/cartao-fidelidade/" class="tag-link-29 tag-link-position-7" title="1 tópico" style="font-size: 8pt;">cartão fidelidade</a>
+                <a href="https://rokuzen.com.br/tag/check-up/" class="tag-link-28 tag-link-position-8" title="1 tópico" style="font-size: 8pt;">Check-up</a>
+                <a href="https://rokuzen.com.br/tag/cha-oriental/" class="tag-link-34 tag-link-position-9" title="1 tópico" style="font-size: 8pt;">chá oriental</a>
+                <a href="https://rokuzen.com.br/tag/cultura-oriental/" class="tag-link-40 tag-link-position-10" title="2 tópicos" style="font-size: 11.6pt;">cultura oriental</a>
+                <a href="https://rokuzen.com.br/tag/facebook/" class="tag-link-18 tag-link-position-11" title="1 tópico" style="font-size: 8pt;">Facebook</a>
+                <a href="https://rokuzen.com.br/tag/genkan/" class="tag-link-38 tag-link-position-12" title="1 tópico" style="font-size: 8pt;">Genkan</a>
+                <a href="https://rokuzen.com.br/tag/golden-square-shopping/" class="tag-link-15 tag-link-position-13" title="1 tópico" style="font-size: 8pt;">Golden Square Shopping</a>
+                <a href="https://rokuzen.com.br/tag/higiene/" class="tag-link-39 tag-link-position-14" title="1 tópico" style="font-size: 8pt;">Higiene</a>
+                <a href="https://rokuzen.com.br/tag/inca-gov-br/" class="tag-link-22 tag-link-position-15" title="1 tópico" style="font-size: 8pt;">inca.gov.br</a>
+                <a href="https://rokuzen.com.br/tag/instagram/" class="tag-link-19 tag-link-position-16" title="1 tópico" style="font-size: 8pt;">INSTAGRAM</a>
+                <a href="https://rokuzen.com.br/tag/insonia/" class="tag-link-74 tag-link-position-17" title="2 tópicos" style="font-size: 11.6pt;">insônia</a>
+                <a href="https://rokuzen.com.br/tag/japao/" class="tag-link-43 tag-link-position-18" title="1 tópico" style="font-size: 8pt;">Japão</a>
+                <a href="https://rokuzen.com.br/tag/jardim-zen/" class="tag-link-32 tag-link-position-19" title="1 tópico" style="font-size: 8pt;">jardim zen</a>
+                <a href="https://rokuzen.com.br/tag/junhovermelho/" class="tag-link-44 tag-link-position-20" title="1 tópico" style="font-size: 8pt;">junhovermelho</a>
+                <a href="https://rokuzen.com.br/tag/koto/" class="tag-link-41 tag-link-position-21" title="1 tópico" style="font-size: 8pt;">Koto</a>
+                <a href="https://rokuzen.com.br/tag/massagem/" class="tag-link-7 tag-link-position-22" title="9 tópicos" style="font-size: 22pt;">massagem</a>
+                <a href="https://rokuzen.com.br/tag/massagem-para-dor-de-cabeca/" class="tag-link-60 tag-link-position-23" title="2 tópicos" style="font-size: 11.6pt;">Massagem para dor de cabeça</a>
+                <a href="https://rokuzen.com.br/tag/massagem-relaxante/" class="tag-link-98 tag-link-position-24" title="1 tópico" style="font-size: 8pt;">Massagem relaxante</a>
+                <a href="https://rokuzen.com.br/tag/massoterapia/" class="tag-link-14 tag-link-position-25" title="3 tópicos" style="font-size: 14pt;">Massoterapia</a>
+                <a href="https://rokuzen.com.br/tag/momento-zen/" class="tag-link-37 tag-link-position-26" title="1 tópico" style="font-size: 8pt;">momento zen</a>
+                <a href="https://rokuzen.com.br/tag/musica-oriental/" class="tag-link-42 tag-link-position-27" title="1 tópico" style="font-size: 8pt;">Música Oriental</a>
+                <a href="https://rokuzen.com.br/tag/musica-relaxante/" class="tag-link-33 tag-link-position-28" title="2 tópicos" style="font-size: 11.6pt;">música relaxante</a>
+                <a href="https://rokuzen.com.br/tag/novembro-azul/" class="tag-link-27 tag-link-position-29" title="1 tópico" style="font-size: 8pt;">Novembro Azul</a>
+                <a href="https://rokuzen.com.br/tag/octogono-zen/" class="tag-link-36 tag-link-position-30" title="1 tópico" style="font-size: 8pt;">octógono zen</a>
+                <a href="https://rokuzen.com.br/tag/outubro-rosa/" class="tag-link-20 tag-link-position-31" title="1 tópico" style="font-size: 8pt;">outubro rosa</a>
+                <a href="https://rokuzen.com.br/tag/prevencao/" class="tag-link-23 tag-link-position-32" title="1 tópico" style="font-size: 8pt;">prevenção</a>
+                <a href="https://rokuzen.com.br/tag/projeto/" class="tag-link-12 tag-link-position-33" title="1 tópico" style="font-size: 8pt;">Projeto</a>
+                <a href="https://rokuzen.com.br/tag/prosangue/" class="tag-link-45 tag-link-position-34" title="1 tópico" style="font-size: 8pt;">prosangue</a>
+                <a href="https://rokuzen.com.br/tag/quick-massage/" class="tag-link-6 tag-link-position-35" title="4 tópicos" style="font-size: 16pt;">quick-massage</a>
+                <a href="https://rokuzen.com.br/tag/quiosque/" class="tag-link-13 tag-link-position-36" title="1 tópico" style="font-size: 8pt;">Quiosque</a>
+                <a href="https://rokuzen.com.br/tag/reflexologia-podal/" class="tag-link-93 tag-link-position-37" title="3 tópicos" style="font-size: 14pt;">Reflexologia Podal</a>
+                <a href="https://rokuzen.com.br/tag/relaxamento/" class="tag-link-9 tag-link-position-38" title="4 tópicos" style="font-size: 16pt;">relaxamento</a>
+                <a href="https://rokuzen.com.br/tag/rokuzen/" class="tag-link-16 tag-link-position-39" title="5 tópicos" style="font-size: 17.6pt;">ROKUZEN</a>
+                <a href="https://rokuzen.com.br/tag/rokuzenrosa/" class="tag-link-25 tag-link-position-40" title="1 tópico" style="font-size: 8pt;">rokuzenrosa</a>
+                <a href="https://rokuzen.com.br/tag/saude-do-homem/" class="tag-link-26 tag-link-position-41" title="1 tópico" style="font-size: 8pt;">Saúde do Homem</a>
+                <a href="https://rokuzen.com.br/tag/shiatsu/" class="tag-link-103 tag-link-position-42" title="2 tópicos" style="font-size: 11.6pt;">Shiatsu</a>
+                <a href="https://rokuzen.com.br/tag/shopping/" class="tag-link-8 tag-link-position-43" title="2 tópicos" style="font-size: 11.6pt;">shopping</a>
+                <a href="https://rokuzen.com.br/tag/sipat/" class="tag-link-5 tag-link-position-44" title="1 tópico" style="font-size: 8pt;">SIPAT</a>
+                <a href="https://rokuzen.com.br/tag/tatami/" class="tag-link-30 tag-link-position-45" title="1 tópico" style="font-size: 8pt;">tatami</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modais de autenticação -->
+    <div id="modal-login" class="auth-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="auth-overlay" data-close="modal"></div>
+        <div class="auth-dialog">
+            <div class="auth-header">
+                <h3 class="auth-title">Acessar minha conta</h3>
+                <button class="auth-close" type="button" data-close="modal" aria-label="Fechar">✕</button>
+            </div>
+            <div class="auth-body">
+                <form id="form-login" class="auth-form" novalidate>
+                    <div class="field-group">
+                        <label for="login-email">E-mail</label>
+                        <input type="email" id="login-email" name="email" autocomplete="email" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="login-senha">Senha</label>
+                        <input type="password" id="login-senha" name="senha" autocomplete="current-password" required>
+                    </div>
+                    <div class="auth-actions">
+                        <button type="submit" class="auth-btn-primary">Entrar</button>
+                        <button type="button" class="auth-btn-secondary" data-close="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-cadastro" class="auth-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="auth-overlay" data-close="modal"></div>
+        <div class="auth-dialog">
+            <div class="auth-header">
+                <h3 class="auth-title">Criar conta</h3>
+                <button class="auth-close" type="button" data-close="modal" aria-label="Fechar">✕</button>
+            </div>
+            <div class="auth-body">
+                <form id="form-cadastro" class="auth-form" novalidate>
+                    <div class="field-group">
+                        <label for="cad-nome">Nome</label>
+                        <input type="text" id="cad-nome" name="nome" autocomplete="name" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="cad-email">E-mail</label>
+                        <input type="email" id="cad-email" name="email" autocomplete="email" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="cad-telefone">Telefone</label>
+                        <input type="tel" id="cad-telefone" name="telefone" autocomplete="tel" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="cad-senha">Senha</label>
+                        <input type="password" id="cad-senha" name="senha" autocomplete="new-password" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="cad-confirmar">Confirmar senha</label>
+                        <input type="password" id="cad-confirmar" name="confirmar" autocomplete="new-password" required>
+                        <div id="cad-erro" class="auth-error">As senhas não coincidem.</div>
+                    </div>
+                    <div class="auth-actions">
+                        <button type="submit" class="auth-btn-primary">Criar conta</button>
+                        <button type="button" class="auth-btn-secondary" data-close="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Captura o termo de busca da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTerm = urlParams.get('q');
+        
+        if (searchTerm) {
+            document.getElementById('search-term').innerHTML = `Buscando por: <strong>${searchTerm}</strong>`;
+        } else {
+            document.getElementById('search-term').innerHTML = 'Nenhum termo de busca especificado.';
+        }
+
+        // Funcionalidade da barra de pesquisa
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchForm = document.querySelector('#header-pesquisa form');
+            const searchInput = document.querySelector('#header-pesquisa input[name="q"]');
+            
+            if (searchForm && searchInput) {
+                searchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const searchTerm = searchInput.value.trim();
+                    
+                    if (searchTerm) {
+                        window.location.href = `busca.html?q=${encodeURIComponent(searchTerm)}`;
+                    } else {
+                        alert('Digite algo para buscar!');
+                    }
+                });
+                
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        searchForm.dispatchEvent(new Event('submit'));
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script>
+    // Modais Login/Cadastro
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginModal = document.getElementById('modal-login');
+        const signupModal = document.getElementById('modal-cadastro');
+
+        function openModal(modal) {
+            if (!modal) return;
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeModal(modal) {
+            if (!modal) return;
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        document.querySelectorAll('.btn-access-account:not(.btn-block)').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(loginModal);
+            });
+        });
+
+        document.querySelectorAll('.link-start-here').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(signupModal);
+            });
+        });
+
+        document.querySelectorAll('[data-close="modal"]').forEach(function (el) {
+            el.addEventListener('click', function () {
+                const modal = el.closest('.auth-modal');
+                closeModal(modal);
+            });
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                [loginModal, signupModal].forEach(closeModal);
+            }
+        });
+
+        function saveUser(user) {
+            const raw = localStorage.getItem('rokuzen_users');
+            const users = raw ? JSON.parse(raw) : [];
+            const exists = users.some(u => u.email === user.email);
+            if (exists) return { ok: false, reason: 'E-mail já cadastrado.' };
+            users.push(user);
+            localStorage.setItem('rokuzen_users', JSON.stringify(users));
+            return { ok: true };
+        }
+
+        function renderGreeting() {
+            const el = document.getElementById('header-greeting');
+            if (!el) return;
+            const raw = localStorage.getItem('rokuzen_current_user');
+            if (!raw) {
+                el.textContent = '';
+                el.classList.remove('is-visible');
+                return;
+            }
+            const current = JSON.parse(raw);
+            el.textContent = `Olá, ${current.nome}`;
+            el.classList.add('is-visible');
+        }
+
+        // Mostrar cumprimento se já logado ao carregar
+        renderGreeting();
+        // Esconder opções de login/cadastro se logado
+        (function hideAuthIfLogged() {
+            const raw = localStorage.getItem('rokuzen_current_user');
+            const isLogged = !!raw;
+            const accessBtn = document.querySelector('.btn-access-account:not(.btn-block)');
+            const ctaRow = document.querySelector('.login-cta-row');
+            if (isLogged) {
+                if (accessBtn) accessBtn.style.display = 'none';
+                if (ctaRow) ctaRow.style.display = 'none';
+            } else {
+                if (accessBtn) accessBtn.style.display = '';
+                if (ctaRow) ctaRow.style.display = '';
+            }
+        })();
+
+        const formCadastro = document.getElementById('form-cadastro');
+        const erroCadastro = document.getElementById('cad-erro');
+        if (formCadastro) {
+            formCadastro.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const nome = /** @type {HTMLInputElement} */(document.getElementById('cad-nome')).value.trim();
+                const email = /** @type {HTMLInputElement} */(document.getElementById('cad-email')).value.trim();
+                const telefone = /** @type {HTMLInputElement} */(document.getElementById('cad-telefone')).value.trim();
+                const senha = /** @type {HTMLInputElement} */(document.getElementById('cad-senha')).value;
+                const confirmar = /** @type {HTMLInputElement} */(document.getElementById('cad-confirmar')).value;
+                if (senha !== confirmar) {
+                    erroCadastro.classList.add('is-visible');
+                    return;
+                }
+                erroCadastro.classList.remove('is-visible');
+                const result = saveUser({ nome, email, telefone, senha });
+                if (!result.ok) {
+                    alert(result.reason);
+                    return;
+                }
+                localStorage.setItem('rokuzen_current_user', JSON.stringify({ nome, email }));
+                renderGreeting();
+                closeModal(signupModal);
+                alert('Cadastro realizado com sucesso!');
+            });
+        }
+
+        const formLogin = document.getElementById('form-login');
+        if (formLogin) {
+            formLogin.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = /** @type {HTMLInputElement} */(document.getElementById('login-email')).value.trim();
+                const senha = /** @type {HTMLInputElement} */(document.getElementById('login-senha')).value;
+                const raw = localStorage.getItem('rokuzen_users');
+                const users = raw ? JSON.parse(raw) : [];
+                const user = users.find(u => u.email === email && u.senha === senha);
+                if (!user) {
+                    alert('E-mail ou senha inválidos.');
+                    return;
+                }
+                localStorage.setItem('rokuzen_current_user', JSON.stringify({ nome: user.nome, email: user.email }));
+                renderGreeting();
+                closeModal(loginModal);
+            });
+        }
+
+        const dropdown = document.querySelector('.dropdown-conteudo');
+        if (dropdown && !dropdown.querySelector('.btn-logout')) {
+            const logoutLink = document.createElement('a');
+            logoutLink.href = '#';
+            logoutLink.className = 'btn-block btn-logout';
+            logoutLink.textContent = 'Sair';
+            logoutLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                localStorage.removeItem('rokuzen_current_user');
+                renderGreeting();
+                const accessBtn = document.querySelector('.btn-access-account:not(.btn-block)');
+                const ctaRow = document.querySelector('.login-cta-row');
+                if (accessBtn) accessBtn.style.display = '';
+                if (ctaRow) ctaRow.style.display = '';
+                alert('Você saiu da conta.');
+            });
+            dropdown.appendChild(logoutLink);
+        }
+    });
+    </script>
+</body>
+</html>
