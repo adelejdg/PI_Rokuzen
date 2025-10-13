@@ -1,19 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="06_style.css">
   <title>Confirmação do Agendamento</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #e6f5e6; padding: 24px; }
-    .container { background: #fff; max-width: 800px; margin: auto; padding: 24px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
-    h2 { color: #1B5E20; margin: 0 0 16px 0; }
-    .row { margin: 8px 0; }
-    .actions { margin-top: 16px; display: flex; gap: 10px; }
-    .btn { padding: 10px 14px; border-radius: 8px; text-decoration: none; display: inline-block; }
-    .btn-primary { background: #8BC34A; color: #fff; }
-    .btn-secondary { background: #d6edc2; color: #1B5E20; }
-    pre { background: #f6f8fa; padding: 12px; border-radius: 8px; overflow: auto; }
-  </style>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -50,7 +41,7 @@
             list.push({ nome: data.nome, horario: data.horario, servico: data.servico });
             localStorage.setItem('rokuzen_bookings', JSON.stringify(list));
           }
-        } catch {}
+        } catch { }
         window.location.href = '04_agendar.html';
       });
 
@@ -91,19 +82,20 @@
     });
   </script>
 </head>
+
 <body>
   <!-- vlibras -->
   <div vw class="enabled">
-          <div vw-access-button class="active"></div>
-          <div vw-plugin-wrapper>
-                    <div class="vw-plugin-top-wrapper"></div>
-          </div>
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
   </div>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
-  new window.VLibras.Widget('https://vlibras.gov.br/app');
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
-  
+
   <div class="container" id="content">
     <h2>Confirmação do Agendamento</h2>
     <div class="row">Confira abaixo os detalhes do seu pedido:</div>
@@ -117,6 +109,5 @@
     </div>
   </div>
 </body>
+
 </html>
-
-

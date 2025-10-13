@@ -1,26 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="04_style.css">
   <title>Agendar Horário</title>
-  <style>
-    body { font-family: Arial, sans-serif; background-color: #e6f5e6; padding: 24px; }
-    .container { background: #fff; max-width: 900px; margin: auto; padding: 24px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
-    h2 { margin: 0 0 16px 0; color: #1B5E20; }
-    .actions { display: flex; gap: 10px; margin-bottom: 16px; }
-    button, .btn { padding: 10px 14px; border-radius: 8px; border: none; cursor: pointer; background: #d6edc2; font-weight: 600; }
-    button:hover, .btn:hover { background: #c3e6ac; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { border: 1px solid #cfe6c5; padding: 10px; text-align: center; }
-    th { background: #f4fbef; color: #2e7d32; }
-    td.slot { cursor: pointer; }
-    td.slot.selected { background: #e0f2f1; }
-    /* status aleatórios */
-    td.slot.status-green { background: #a5d6a7; }
-    td.slot.status-red { background: #ef9a9a; }
-    th.selectable { cursor: pointer; }
-    th.selectable.selected { background: #c5e1a5; }
-  </style>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const table = document.getElementById('grade');
@@ -52,7 +36,7 @@
       const nomesBase = ['Ana', 'Bruno', 'Carla', 'Diego', 'Eduarda', 'Felipe', 'Giovana', 'Hugo', 'Isabela', 'João', 'Katia', 'Leonardo', 'Marina', 'Nicolas', 'Olivia', 'Paula', 'Rafael', 'Sofia', 'Tiago', 'Vitória'];
       const ths = Array.from(table.tHead.querySelectorAll('th')).slice(1);
       let nomesPersistidos = null;
-      try { nomesPersistidos = JSON.parse(localStorage.getItem('rokuzen_schedule_names') || 'null'); } catch {}
+      try { nomesPersistidos = JSON.parse(localStorage.getItem('rokuzen_schedule_names') || 'null'); } catch { }
       if (!nomesPersistidos || nomesPersistidos.length < ths.length) {
         const usados = new Set();
         nomesPersistidos = ths.map(() => {
@@ -97,7 +81,7 @@
 
       // Marcar horários já reservados como indisponíveis (status-red)
       let bookings = [];
-      try { bookings = JSON.parse(localStorage.getItem('rokuzen_bookings') || '[]'); } catch {}
+      try { bookings = JSON.parse(localStorage.getItem('rokuzen_bookings') || '[]'); } catch { }
       // Mapear nome por coluna
       const headerCols = Array.from(table.tHead.querySelectorAll('th')).slice(1);
       const colToName = headerCols.map(th => th.textContent);
@@ -126,19 +110,20 @@
     });
   </script>
 </head>
+
 <body>
-<!-- vlibras -->
+  <!-- vlibras -->
   <div vw class="enabled">
-          <div vw-access-button class="active"></div>
-          <div vw-plugin-wrapper>
-                    <div class="vw-plugin-top-wrapper"></div>
-          </div>
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
   </div>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
-  new window.VLibras.Widget('https://vlibras.gov.br/app');
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
-  
+
   <div class="container">
     <h2>Selecione um horário</h2>
     <div class="actions">
@@ -216,6 +201,5 @@
     </table>
   </div>
 </body>
+
 </html>
-
-

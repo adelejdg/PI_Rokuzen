@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="07_style.css">
   <title>Relatório de Sessões</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #e6f5e6; padding: 24px; }
-    .container { background: #fff; max-width: 700px; margin: auto; padding: 24px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
-    h2 { color: #1B5E20; margin: 0 0 16px 0; }
-    label { display: block; margin-top: 12px; font-weight: 600; }
-    input, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
-    textarea { min-height: 90px; }
-    .actions { margin-top: 16px; display: flex; gap: 8px; }
-    button { padding: 10px 14px; background: #d6edc2; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; }
-    button:hover { background: #c3e6ac; }
-    .finished { text-decoration: line-through; color: #777; margin-top: 16px; }
-  </style>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const inicioEl = document.getElementById('rep-inicio');
@@ -41,19 +31,20 @@
     });
   </script>
 </head>
+
 <body>
   <!-- vlibras -->
   <div vw class="enabled">
-          <div vw-access-button class="active"></div>
-          <div vw-plugin-wrapper>
-                    <div class="vw-plugin-top-wrapper"></div>
-          </div>
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
   </div>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
-  new window.VLibras.Widget('https://vlibras.gov.br/app');
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
-  
+
   <div class="container">
     <h2>Relatório de Sessões</h2>
     <label for="rep-inicio">Início da sessão</label>
@@ -71,6 +62,5 @@
     <div id="saida-relatorio"></div>
   </div>
 </body>
+
 </html>
-
-

@@ -1,58 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="03_style.css">
   <title>Meus Agendamentos</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #e6f5e6;
-      padding: 40px;
-    }
-
-    .container {
-      background-color: white;
-      max-width: 400px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      text-align: center;
-    }
-
-    h2 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    button {
-      margin-top: 30px;
-      padding: 10px 20px;
-      background-color: #d6edc2;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #c3e6ac;
-    }
-  </style>
 </head>
+
 <body>
-<!-- vlibras -->
+  <!-- vlibras -->
   <div vw class="enabled">
-          <div vw-access-button class="active"></div>
-          <div vw-plugin-wrapper>
-                    <div class="vw-plugin-top-wrapper"></div>
-          </div>
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
   </div>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
-  new window.VLibras.Widget('https://vlibras.gov.br/app');
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
-  
+
   <div class="container">
     <h2>Todos seus agendamentos aqui:</h2>
     <!-- Aqui a gente add a lista dps -->
@@ -61,4 +28,5 @@
   </div>
 
 </body>
+
 </html>

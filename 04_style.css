@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f5e6;
+    padding: 24px;
+}
+
+.container {
+    background: #fff;
+    max-width: 900px;
+    margin: auto;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    margin: 0 0 16px 0;
+    color: #1B5E20;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+button,
+.btn {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #d6edc2;
+    font-weight: 600;
+}
+
+button:hover,
+.btn:hover {
+    background: #c3e6ac;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #cfe6c5;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #f4fbef;
+    color: #2e7d32;
+}
+
+td.slot {
+    cursor: pointer;
+}
+
+td.slot.selected {
+    background: #e0f2f1;
+}
+
+/* status aleatórios */
+td.slot.status-green {
+    background: #a5d6a7;
+}
+
+td.slot.status-red {
+    background: #ef9a9a;
+}
+
+th.selectable {
+    cursor: pointer;
+}
+
+th.selectable.selected {
+    background: #c5e1a5;
+}
