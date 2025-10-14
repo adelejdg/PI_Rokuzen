@@ -14,7 +14,9 @@ As tecnologias utilizadas ao longo do projeto iniciaram-se no Figma e Canvas, on
 O website foi desenvolvido pelo grupo de projeto integrador interdisciplinar mestrado pelo professor Alexander, com seus respectivos membros: Carmen Salido, Adele di Girolamo e Arthemis Nobre. Além disso, os contribuidores para o projeto foram Maurício e Gustavo Ken, que nos disponibilizaram seu próprio sistema e banco de dados para que pudéssemos ter uma base do que era esperado no projeto e o coordenador de curso Rudolf, que auxiliou nos requisitos do projeto e na ponte entre o grupo e o parceiro.
 
 # 📁 Acesso ao projeto
+
 O projeto pode ser acessado por qualquer um que clonar todo o repositorio em seu dispositivo e tiver o vs code e MongoDB ou variaveis instalados em seu dispositivo.
+
 # 🛠️ Abrir e rodar o projeto
 Para executar o projeto os passos principais são:
 1.clone o repositorio para uma pasta local
