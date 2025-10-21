@@ -19,9 +19,15 @@ O website foi desenvolvido pelo grupo de projeto integrador interdisciplinar mes
 O projeto pode ser acessado por qualquer um que clonar todo o repositorio em seu dispositivo e tiver o vs code e MongoDB ou variaveis instalados em seu dispositivo.
 
 # 🛠️ Abrir e rodar o projeto
+
 Para executar o projeto os passos principais são:
+
 1.clone o repositorio para uma pasta local
+
 2.abra esse folder em seu vs code
+
 3.baixe a extensão do live server para conseguir abrir o site localmente
+
 4.caso deseje o acesso ao banco de dados, tambem o abra em seu aplicativo MongoDB
+
 5.selecione Go Live no canto inferior direito em seu vs code
