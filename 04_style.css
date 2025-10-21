@@ -1,7 +1,26 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #e6f5e6;
-    padding: 24px;
+    padding: 20px;
+}
+
+/* Bootstrap responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    th, td {
+        padding: 6px;
+    }
 }
 
 .container {
@@ -79,4 +98,54 @@ th.selectable {
 
 th.selectable.selected {
     background: #c5e1a5;
+}
+
+/* Estilos para seletor de data */
+.date-selector {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.date-selector h3 {
+    margin: 0 0 12px 0;
+    color: #1B5E20;
+    font-size: 18px;
+}
+
+.date-selector input[type="date"] {
+    width: 200px;
+    padding: 10px 12px;
+    border: 2px solid #cfe6c5;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.date-selector input[type="date"]:focus {
+    outline: none;
+    border-color: #8BC34A;
+    box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.15);
+}
+
+.data-info {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #2e7d32;
+    font-size: 14px;
+}
+
+/* Responsivo para seletor de data */
+@media (max-width: 768px) {
+    .date-selector {
+        padding: 16px;
+    }
+    
+    .date-selector input[type="date"] {
+        width: 100%;
+        max-width: 200px;
+    }
 }

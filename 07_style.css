@@ -1,7 +1,18 @@
 body {
     font-family: Arial, sans-serif;
     background: #e6f5e6;
-    padding: 24px;
+    padding: 20px;
+}
+
+/* Bootstrap responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
 }
 
 .container {

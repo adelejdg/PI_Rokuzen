@@ -3,93 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="05_style.css">
   <title>Serviços</title>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const params = new URLSearchParams(window.location.search);
-      const nome = params.get('nome');
-      const horario = params.get('horario');
-      const summary = document.getElementById('summary');
-      const pkg4 = document.getElementById('pacote4');
-      const pkg8 = document.getElementById('pacote8');
-      const finalizarBtn = document.getElementById('btn-finalizar');
-      function updateSummary() {
-        const serv = document.querySelector('.card.selected')?.textContent || '';
-        const eq = document.querySelector('.dot.selected')?.dataset.label || '';
-        const dur = document.querySelector('.dur.selected')?.textContent || '';
-        const dur4 = document.querySelector('.dur4.selected')?.textContent || '';
-        const dur8 = document.querySelector('.dur8.selected')?.textContent || '';
-        summary.textContent = `Profissional: ${nome || '-'} | Horário: ${horario || '-'} | Serviço: ${serv || '-'} | Equipamento: ${eq || '-'} | Duração: ${dur || '-'} | Pacote 4: ${dur4 || '—'} | Pacote 8: ${dur8 || '—'}`;
-      }
-
-      // Serviços
-      document.querySelectorAll('.card').forEach(el => {
-        el.addEventListener('click', function () {
-          document.querySelectorAll('.card.selected').forEach(c => c.classList.remove('selected'));
-          el.classList.add('selected');
-          document.getElementById('equipamentos').scrollIntoView({ behavior: 'smooth', block: 'start' });
-          updateSummary();
-        });
-      });
-
-      // Dots (equipamentos)
-      document.querySelectorAll('.dot').forEach(el => {
-        el.addEventListener('click', function () {
-          if (el.classList.contains('red')) { alert('Equipamento indisponível.'); return; }
-          if (el.classList.contains('yellow')) { alert('Equipamento em manutenção.'); return; }
-          document.querySelectorAll('.dot.selected').forEach(d => d.classList.remove('selected'));
-          el.classList.add('selected');
-          document.getElementById('duracao').scrollIntoView({ behavior: 'smooth', block: 'start' });
-          updateSummary();
-        });
-      });
-
-      // Durações
-      document.querySelectorAll('.dur').forEach(el => {
-        el.addEventListener('click', function () {
-          document.querySelectorAll('.dur.selected').forEach(d => d.classList.remove('selected'));
-          el.classList.add('selected');
-          // revelar pacotes opcionais
-          pkg4.classList.remove('hidden');
-          pkg8.classList.remove('hidden');
-          updateSummary();
-        });
-      });
-
-      // Seleção de pacotes opcionais (4 e 8 sessões)
-      document.querySelectorAll('.dur4').forEach(el => {
-        el.addEventListener('click', function () {
-          document.querySelectorAll('.dur4.selected').forEach(d => d.classList.remove('selected'));
-          el.classList.add('selected');
-          updateSummary();
-        });
-      });
-
-      document.querySelectorAll('.dur8').forEach(el => {
-        el.addEventListener('click', function () {
-          document.querySelectorAll('.dur8.selected').forEach(d => d.classList.remove('selected'));
-          el.classList.add('selected');
-          updateSummary();
-        });
-      });
-
-      // Finalizar
-      finalizarBtn.addEventListener('click', function () {
-        const serv = document.querySelector('.card.selected')?.textContent;
-        const eq = document.querySelector('.dot.selected')?.dataset.label;
-        const dur = document.querySelector('.dur.selected')?.textContent;
-        if (!serv || !eq || !dur) { alert('Selecione serviço, equipamento (verde) e duração avulsa.'); return; }
-        const dur4 = document.querySelector('.dur4.selected')?.textContent || null;
-        const dur8 = document.querySelector('.dur8.selected')?.textContent || null;
-        const payload = { nome, horario, servico: serv, equipamento: eq, duracaoAvulso: dur, pacote4: dur4, pacote8: dur8, timestamp: new Date().toISOString() };
-        localStorage.setItem('rokuzen_last_booking', JSON.stringify(payload));
-        window.location.href = '06_confirmacao.html';
-      });
-
-      updateSummary();
-    });
-  </script>
+  <script src="js/01_script.js"></script>
+  <script src="js/servicos.js"></script>
 </head>
 
 <body>
@@ -101,9 +20,6 @@
     </div>
   </div>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
 
   <div class="container">
     <a class="back" href="04_agendar.html">Voltar à grade</a>
@@ -156,10 +72,43 @@
     </div>
 
     <div id="summary" class="summary"></div>
+
+    <!-- Seleção de unidade e dados do cliente -->
+    <div id="dados-cliente" class="section hidden">
+      <h2>Unidade e dados do cliente</h2>
+      
+      <div class="field-group">
+        <label for="unidade">Unidade:</label>
+        <select id="unidade" required>
+          <option value="">Selecione...</option>
+          <option value="golden">Golden Square Shopping - São Bernardo</option>
+          <option value="west">Shopping West Plaza</option>
+          <option value="mooca">Mooca Plaza Shopping</option>
+          <option value="grand">Grand Plaza Shopping - Santo André</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label for="cliente-nome">Nome completo do cliente:</label>
+        <input type="text" id="cliente-nome" required>
+      </div>
+
+      <div class="field-group">
+        <label for="cliente-email">E-mail do cliente:</label>
+        <input type="email" id="cliente-email" required>
+      </div>
+
+      <div class="field-group">
+        <label for="cliente-telefone">Telefone do cliente:</label>
+        <input type="tel" id="cliente-telefone" required>
+      </div>
+    </div>
+
     <div class="section">
       <button id="btn-finalizar" class="btn-primary">Finalizar</button>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

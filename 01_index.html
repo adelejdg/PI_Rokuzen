@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Rokuzen - massagem terapêutica</title>
         <link rel="icon" href="mídias/favicon.png" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="00_style.css">
         <link rel="stylesheet"
                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -101,9 +102,8 @@
                                                                 <a href="#"
                                                                         class="btn-access-account btn-block btn-logged-in"
                                                                         id="link-agendamentos">Meus agendamentos</a>
-                                                                <a href="#" id="btn-logout"
-                                                                        class="btn-access-account btn-block btn-logged-in"
-                                                                        onclick="logout()">Sair da conta</a>
+                                <a href="#" id="btn-logout"
+                                                                        class="btn-access-account btn-block btn-logged-in">Sair da conta</a>
                                                         </div>
                                                 </div>
                                         </div>
@@ -120,9 +120,6 @@
                         </div>
                 </div>
                 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-                <script>
-                        new window.VLibras.Widget('https://vlibras.gov.br/app');
-                </script>
 
                 <div id="conteudo-main">
                         <div class="carousel" aria-label="Destaques">
@@ -327,11 +324,78 @@
                                         title="1 tópico" style="font-size: 8pt;">SIPAT</a>
                                 <a href="https://rokuzen.com.br/tag/tatami/" class="tag-link-30 tag-link-position-45"
                                         title="1 tópico" style="font-size: 8pt;">tatami</a>
+                                <a href="termos.html" class="tag-link-terms" title="Termos de uso" style="font-size: 8pt;">Termos de uso</a>
                         </div>
                 </div>
 
         </footer>
 
+        <!-- Aviso de Cookies -->
+        <div id="cookie-banner" role="region" aria-label="Aviso de cookies" style="display:none;">
+                <div class="cookie-content">
+                        <p>
+                                Usamos cookies para melhorar sua experiência. Alguns são necessários e não podem ser desativados. Você pode gerenciar suas preferências clicando em "Verificar cookies".
+                        </p>
+                        <div class="cookie-actions">
+                                <button type="button" id="cookie-accept-all">Aceitar todos</button>
+                                <button type="button" id="cookie-reject-nonessential">Recusar não necessários</button>
+                                <button type="button" id="cookie-open-preferences">Verificar cookies</button>
+                        </div>
+                </div>
+        </div>
+
+        <!-- Modal Preferências de Cookies -->
+        <div id="cookie-modal" class="cookie-modal" aria-hidden="true" role="dialog" aria-modal="true">
+                <div class="cookie-overlay" data-close="cookie-modal"></div>
+                <div class="cookie-dialog" role="document">
+                        <div class="cookie-header">
+                                <h3 class="cookie-title">Preferências de cookies</h3>
+                                <button class="cookie-close" type="button" data-close="cookie-modal" aria-label="Fechar">✕</button>
+                        </div>
+                        <div class="cookie-body">
+                                <div class="cookie-group">
+                                        <div class="cookie-row">
+                                                <div class="cookie-row-main">
+                                                        <strong>Desempenho</strong>
+                                                        <span class="cookie-badge">Sempre ativos</span>
+                                                </div>
+                                                <p>Os cookies de desempenho são usados para entender e analisar os principais índices de desempenho do site.</p>
+                                        </div>
+                                        <div class="cookie-row">
+                                                <label class="cookie-row-main" for="cookie-functional">
+                                                        <strong>Funcionais</strong>
+                                                        <input type="checkbox" id="cookie-functional">
+                                                </label>
+                                                <p>Os cookies funcionais ajudam a compartilhar o conteúdo do site; Coletar feedbacks e outros de terceiros.
+</p>
+                                        </div>
+                                        <div class="cookie-row">
+                                                <label class="cookie-row-main" for="cookie-analytics">
+                                                        <strong>Análise</strong>
+                                                        <input type="checkbox" id="cookie-analytics">
+                                                </label>
+                                                <p>Os cookies analíticos são usados para entender como os visitantes interagem com o site e ajudam a fornecer as estatisticas</p>
+                                        </div>
+                                        <div class="cookie-row">
+                                                <label class="cookie-row-main" for="cookie-marketing">
+                                                        <strong>Publicidade</strong>
+                                                        <input type="checkbox" id="cookie-marketing">
+                                                </label>
+                                                <p>Os cookies de publicidade são usados ​​para fornecer aos visitantes anúncios e campanhas de marketing relevantes.</p>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="cookie-actions footer">
+                                <button type="button" id="cookie-save-preferences" class="primary">Salvar preferências</button>
+                                <button type="button" id="cookie-accept-all-2">Aceitar todos</button>
+                        </div>
+                </div>
+        </div>
+
+        <!-- Botão flutuante para reabrir preferências -->
+        <button id="cookie-reopen" type="button" aria-label="Verificar cookies" title="Verificar cookies" style="display:none;">⚙️ Cookies</button>
+
+        <script src="js/01_script.js"></script>
         <!-- Modais de autenticação -->
         <div id="modal-login" class="auth-modal" aria-hidden="true" role="dialog" aria-modal="true">
                 <div class="auth-overlay" data-close="modal"></div>
@@ -409,6 +473,8 @@
                 </div>
         </div>
 
+        <script src="js/01_script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -3,112 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="04_style.css">
   <title>Agendar Horário</title>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const table = document.getElementById('grade');
-      let selectedName = null;
-      table.addEventListener('click', function (e) {
-        const head = e.target.closest('th.selectable');
-        if (head) {
-          table.querySelectorAll('th.selectable.selected').forEach(th => th.classList.remove('selected'));
-          head.classList.add('selected');
-          selectedName = head.textContent;
-          return;
-        }
-        const cell = e.target.closest('.slot');
-        if (!cell) return;
-        if (cell.classList.contains('status-red')) return; // não permite selecionar reservados
-        table.querySelectorAll('.slot.selected').forEach(td => td.classList.remove('selected'));
-        cell.classList.add('selected');
-      });
-
-      document.getElementById('btn-confirmar').addEventListener('click', function () {
-        const chosen = table.querySelector('.slot.selected');
-        if (!selectedName) { alert('Selecione um nome no cabeçalho.'); return; }
-        if (!chosen) { alert('Selecione um horário.'); return; }
-        const params = new URLSearchParams({ nome: selectedName, horario: chosen.dataset.hora });
-        window.location.href = '05_servicos.html?' + params.toString();
-      });
-
-      // Substitui os nomes por aleatórios, mas persistindo entre visitas
-      const nomesBase = ['Ana', 'Bruno', 'Carla', 'Diego', 'Eduarda', 'Felipe', 'Giovana', 'Hugo', 'Isabela', 'João', 'Katia', 'Leonardo', 'Marina', 'Nicolas', 'Olivia', 'Paula', 'Rafael', 'Sofia', 'Tiago', 'Vitória'];
-      const ths = Array.from(table.tHead.querySelectorAll('th')).slice(1);
-      let nomesPersistidos = null;
-      try { nomesPersistidos = JSON.parse(localStorage.getItem('rokuzen_schedule_names') || 'null'); } catch { }
-      if (!nomesPersistidos || nomesPersistidos.length < ths.length) {
-        const usados = new Set();
-        nomesPersistidos = ths.map(() => {
-          let nome;
-          do { nome = nomesBase[Math.floor(Math.random() * nomesBase.length)]; } while (usados.has(nome));
-          usados.add(nome);
-          return nome;
-        });
-        localStorage.setItem('rokuzen_schedule_names', JSON.stringify(nomesPersistidos));
-      }
-      ths.forEach((th, i) => {
-        th.textContent = nomesPersistidos[i];
-        th.classList.add('selectable');
-      });
-
-      // Gera horários aleatórios nas células e aplica status
-      // horários fixos por linha, sem aleatoriedade
-      function horaDaLinha(rowIndex) {
-        const mapa = {
-          0: '09:00',
-          1: '10:00',
-          2: '11:00',
-          3: '14:00',
-          4: '15:00',
-          5: '16:00'
-        };
-        return mapa[rowIndex] || '09:00';
-      }
-
-      // Preenche horários fixos por linha
-      Array.from(table.tBodies[0].rows).forEach((row, rIdx) => {
-        const hora = horaDaLinha(rIdx);
-        Array.from(row.cells).forEach((cell, cIdx) => {
-          if (cIdx === 0) return; // cabeçalho da linha
-          const td = cell;
-          if (!td.classList.contains('slot')) return;
-          td.textContent = hora;
-          td.dataset.hora = hora;
-          td.classList.add('status-green');
-        });
-      });
-
-      // Marcar horários já reservados como indisponíveis (status-red)
-      let bookings = [];
-      try { bookings = JSON.parse(localStorage.getItem('rokuzen_bookings') || '[]'); } catch { }
-      // Mapear nome por coluna
-      const headerCols = Array.from(table.tHead.querySelectorAll('th')).slice(1);
-      const colToName = headerCols.map(th => th.textContent);
-      // Itera linhas e colunas para cruzar com reservas
-      Array.from(table.tBodies[0].rows).forEach(row => {
-        Array.from(row.cells).forEach((cell, idx) => {
-          // idx 0 é o header da linha (hora fixa), colunas começam em 1
-          if (idx === 0) return;
-          const td = cell;
-          if (!td.classList.contains('slot')) return;
-          const nomeCol = colToName[idx - 1];
-          const horaCell = td.dataset.hora;
-          const reservado = bookings.some(b => b.nome === nomeCol && b.horario === horaCell);
-          if (reservado) {
-            td.classList.remove('selected');
-            td.classList.remove('status-green');
-            td.classList.add('status-red');
-            td.title = 'Horário indisponível';
-          } else {
-            td.classList.add('status-green');
-            td.classList.remove('status-red');
-            td.title = 'Disponível';
-          }
-        });
-      });
-    });
-  </script>
+  <script src="js/01_script.js"></script>
+  <script src="js/agendar.js"></script>
 </head>
 
 <body>
@@ -120,12 +20,17 @@
     </div>
   </div>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
 
   <div class="container">
     <h2>Selecione um horário</h2>
+    
+    <!-- Seletor de data -->
+    <div class="date-selector">
+      <h3>Escolha a data:</h3>
+      <input type="date" id="data-agendamento" required>
+      <div id="data-selecionada" class="data-info"></div>
+    </div>
+    
     <div class="actions">
       <a class="btn" href="03_meusagendamentos.html">Voltar</a>
       <button id="btn-confirmar">Confirmar seleção</button>
@@ -200,6 +105,7 @@
       </tbody>
     </table>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
