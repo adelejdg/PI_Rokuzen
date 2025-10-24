@@ -342,7 +342,7 @@ main {
 
 /* Footer responsivo */
 @media (max-width: 768px) {
-    #rodape1 {
+    #footer {
         height: auto;
     }
     #rdp-unidades,
@@ -443,11 +443,11 @@ main {
 }
 
 /* rodapé//////////////////////////////////////////////////////////////////////////////////////// */
-#rodape1 {
+footer {
     display: flex;
     flex-wrap: wrap;
     min-height: 300px;
-    background-color: transparent;
+    background-color: white;
     color: #000000 !important; 
     justify-content: space-between;
     align-items: flex-start;
@@ -455,21 +455,19 @@ main {
     padding-bottom: 16px;
 }
 
-#rodape1 h3 {
+footer h3 {
     color: rgb(110, 47, 126);
 }
 
-/* removida a barra de pesquisa do rodapé */
-
 #rdp-unidades {
-    line-height: 2px;
-    width: 50%;
-    padding: 16px;
+    line-height: 13px;
+    width: 45%;
     box-sizing: border-box;
+    margin: 12px 0 0 15px;
 }
 
 #rdp-unidades h3 {
-    margin-bottom: 50px; 
+    margin-bottom: 10px; 
 }
 
 #rdp-tags {
@@ -500,7 +498,7 @@ main {
     border-color: #cccccc;
 }
 
-/* Garante que os balões de tag comecem abaixo do título e não ao lado */
+
 #rdp-tags h3 {
     width: 100%;
     margin-bottom: 12px;
@@ -645,7 +643,7 @@ main {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #1b1b1b;
+    background: #1b1b1bea;
     color: #ffffff;
     z-index: 6000;
 }
