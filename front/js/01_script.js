@@ -106,28 +106,28 @@ document.addEventListener('DOMContentLoaded', function () {
         logoutBtn.addEventListener('click', function (e) { e.preventDefault(); performLogout(); });
     }
 
-    // VLibras init
+    // VLibras
     if (window.VLibras && typeof window.VLibras.Widget === 'function') {
         try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch {}
     }
 });
 
 // Busca
-document.addEventListener('DOMContentLoaded', function () {
-    const searchForm = document.querySelector('#header-pesquisa form');
-    const searchInput = document.querySelector('#header-pesquisa input[name="q"]');
-    if (searchForm && searchInput) {
-        searchForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm) window.location.href = `busca.html?q=${encodeURIComponent(searchTerm)}`;
-            else alert('Digite algo para buscar!');
-        });
-        searchInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') { e.preventDefault(); searchForm.dispatchEvent(new Event('submit')); }
-        });
-    }
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     const searchForm = document.querySelector('#header-pesquisa form');
+//     const searchInput = document.querySelector('#header-pesquisa input[name="q"]');
+//     if (searchForm && searchInput) {
+//         searchForm.addEventListener('submit', function (e) {
+//             e.preventDefault();
+//             const searchTerm = searchInput.value.trim();
+//             if (searchTerm) window.location.href = `busca.html?q=${encodeURIComponent(searchTerm)}`;
+//             else alert('Digite algo para buscar!');
+//         });
+//         searchInput.addEventListener('keypress', function (e) {
+//             if (e.key === 'Enter') { e.preventDefault(); searchForm.dispatchEvent(new Event('submit')); }
+//         });
+//     }
+// });
 
 // Cookies
 document.addEventListener('DOMContentLoaded', function () {
@@ -186,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const formLogin = document.getElementById('form-login');
     if (formLogin) { formLogin.addEventListener('submit', function (e) { e.preventDefault(); const email = /** @type {HTMLInputElement} */(document.getElementById('login-email')).value.trim(); const senha = /** @type {HTMLInputElement} */(document.getElementById('login-senha')).value; const raw = localStorage.getItem('rokuzen_users'); const users = raw ? JSON.parse(raw) : []; const user = users.find(u => u.email === email && u.senha === senha); if (!user) { alert('E-mail ou senha inválidos.'); return; } localStorage.setItem('rokuzen_current_user', JSON.stringify({ nome: user.nome, email: user.email })); renderGreeting(); updateAuthElements(); closeModal(loginModal); }); }
     const dropdown = document.querySelector('.dropdown-conteudo');
-    if (dropdown && !dropdown.querySelector('.btn-logout')) { const logoutLink = document.createElement('a'); logoutLink.href = '#'; logoutLink.className = 'btn-block btn-logout'; logoutLink.textContent = 'Sair'; logoutLink.addEventListener('click', function (e) { e.preventDefault(); localStorage.removeItem('rokuzen_current_user'); renderGreeting(); const accessBtn = document.querySelector('.btn-access-account:not(.btn-block)'); const ctaRow = document.querySelector('.login-cta-row'); if (accessBtn) accessBtn.style.display = ''; if (ctaRow) ctaRow.style.display = ''; alert('Você saiu da conta.'); }); dropdown.appendChild(logoutLink); }
 });
 
 
