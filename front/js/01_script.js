@@ -3,6 +3,13 @@ function isUserLoggedIn() {
     return localStorage.getItem('rokuzen_current_user') !== null;
 }
 
+function mostrarPopUpCadastro() {
+    const btnLogin = document.getElementById('acessar-conta');
+    if (isUserLoggedIn() === false) {
+        
+    }
+}
+
 // Função para atualizar a visibilidade dos elementos com base no status de login
 function updateLoginElements() {
     const loginBtn = document.getElementById('btn-login');
