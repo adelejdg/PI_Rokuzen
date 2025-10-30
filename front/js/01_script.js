@@ -189,10 +189,39 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-close="modal"]').forEach(function (el) { el.addEventListener('click', function () { const modal = el.closest('.auth-modal'); closeModal(modal); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { [loginModal, signupModal].forEach(closeModal); } });
     function saveUser(user) { const raw = localStorage.getItem('rokuzen_users'); const users = raw ? JSON.parse(raw) : []; const exists = users.some(u => u.email === user.email); if (exists) return { ok: false, reason: 'E-mail já cadastrado.' }; users.push(user); localStorage.setItem('rokuzen_users', JSON.stringify(users)); return { ok: true }; }
-    function renderGreeting() { const el = document.getElementById('header-greeting'); if (!el) return; const raw = localStorage.getItem('rokuzen_current_user'); if (!raw) { el.textContent = ''; el.classList.remove('is-visible'); el.style.display = 'none'; return; } const current = JSON.parse(raw); el.textContent = `Olá, ${current.nome}`; el.classList.add('is-visible'); el.style.display = 'block'; }
+    function renderGreeting() { 
+        const el = document.getElementById('header-greeting'); 
+        if (!el) return; const raw = localStorage.getItem('rokuzen_current_user'); 
+        if (!raw) { el.textContent = ''; el.classList.remove('is-visible'); 
+        el.style.display = 'none'; 
+        return; } 
+    const current = JSON.parse(raw); 
+    el.textContent = `Olá, ${current.nome}`; 
+    el.classList.add('is-visible'); 
+    el.style.display = 'block'; }
+    
     renderGreeting();
-    function updateAuthElements() { const raw = localStorage.getItem('rokuzen_current_user'); const isLogged = !!raw; const loginBtn = document.getElementById('btn-login'); const loginCta = document.getElementById('criar-conta'); const loggedInElements = document.querySelectorAll('.btn-logged-in'); if (isLogged) { if (loginBtn) loginBtn.style.display = 'none'; if (loginCta) loginCta.style.display = 'none'; loggedInElements.forEach(el => { el.style.display = 'block'; }); } else { if (loginBtn) loginBtn.style.display = 'block'; if (loginCta) loginCta.style.display = 'block'; loggedInElements.forEach(el => { el.style.display = 'none'; }); } }
+    
+    function updateAuthElements() { 
+        const raw = localStorage.getItem('rokuzen_current_user'); 
+        const isLogged = !!raw; 
+        const loginBtn = document.getElementById('btn-login'); 
+        const loginCta = document.getElementById('criar-conta'); 
+        const loggedInElements = document.querySelectorAll('.btn-logged-in'); 
+        if (isLogged) { 
+            if (loginBtn) loginBtn.style.display = 'none'; 
+            if (loginCta) loginCta.style.display = 'none'; 
+            loggedInElements.forEach(el => { el.style.display = 'block'; }); 
+        } 
+        else { 
+            if (loginBtn) loginBtn.style.display = 'block'; 
+            if (loginCta) loginCta.style.display = 'block'; 
+            loggedInElements.forEach(el => { el.style.display = 'none'; }); 
+        } 
+    }
+
     updateAuthElements();
+    
     const formCadastro = document.getElementById('form-cadastro');
     const erroCadastro = document.getElementById('cad-erro');
     if (formCadastro) { formCadastro.addEventListener('submit', function (e) { e.preventDefault(); const nome = /** @type {HTMLInputElement} */(document.getElementById('cad-nome')).value.trim(); const email = /** @type {HTMLInputElement} */(document.getElementById('cad-email')).value.trim(); const telefone = /** @type {HTMLInputElement} */(document.getElementById('cad-telefone')).value.trim(); const senha = /** @type {HTMLInputElement} */(document.getElementById('cad-senha')).value; const confirmar = /** @type {HTMLInputElement} */(document.getElementById('cad-confirmar')).value; if (senha !== confirmar) { erroCadastro.classList.add('is-visible'); return; } erroCadastro.classList.remove('is-visible'); const result = saveUser({ nome, email, telefone, senha }); if (!result.ok) { alert(result.reason); return; } localStorage.setItem('rokuzen_current_user', JSON.stringify({ nome, email })); renderGreeting(); updateAuthElements(); closeModal(signupModal); alert('Cadastro realizado com sucesso!'); }); }
