@@ -95,7 +95,14 @@
                                                                         <div class="dropdown-conteudo">
                                                                                 <a href="#" id="acessar-conta"><i class="fa fa-caret-right"></i> Acessar minha conta</a>
                                                                                 <p style="font-size: 12px; color: gray; margin: 10px 0 0 0;">Não possui uma conta?</p>
-                                                                                <a href="#"><i class="fa fa-caret-right"></i> Criar conta</a>
+                                                                                <a href="#" id="criar-conta"><i class="fa fa-caret-right"></i> Criar conta</a>
+                                                                                
+                                                                                <!-- dps de logado -->
+                                                                                <p>Olá! nome</p>
+                                                                                <a href="02_meusdados.html" class="btn-access-account" id="acessar-dados"><i class="fa fa-caret-right"></i>Meus Dados</a>
+                                                                                <a href="#" class="btn-access-account" id="acessar-agendamentos"><i class="fa fa-caret-right"></i>Meus agendamentos</a>
+
+
                                                                                 <!-- <a href="#" class="btn-access-account"
                                                                                         id="btn-login">Acessar minha conta</a>
                                                                                 <div class="login-cta-row" id="login-cta">
@@ -416,36 +423,54 @@
                 </div>
         </div>
 
+
+<!-- pop-up de cadastrooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo -->
 <div class="container-fluid">
         <div class="area-de-cadastro">
+                <div class="rol-sm-4" style="margin-left: 75px; font-weight: 700; color: darkgreen;">Cadastro</div>
+                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Nome completo</div>
                 <div class="rol-sm-4">
                         <img src="/front/mídias/icon-nome.png"> 
                         <input type="text" name="nome" placeholder="Nome completo" id="cadastro-nome">
                 </div>
+                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">E-mail</div>
                 <div class="rol-sm-4">
                         <img src="/front/mídias/icon-email2.png"> 
                         <input type="email" name="email"  placeholder="E-mail" id="cadastro-email">
                 </div>
+                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Nº de telefone</div>
                 <div class="rol-sm-4">
                         <img src="/front/mídias/icon-telefone.png"> 
                         <input type="tel" name="numero" placeholder="Nº do telefone" id="cadastro-numero">
                 </div>
+                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Senha</div>
                 <div class="rol-sm-4">
                         <img src="/front/mídias/icon-senha.png"> 
                         <input type="password" name="senha" placeholder="Senha" id="cadastro-senha">
+                </div>
+                <div class="rol-sm-4">
+                        <button id="btn-cadastrar">Criar conta</button>
                 </div>
         </div>
 </div>
 
+<!-- pop-up de loginnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn -->
 <div class="container-fluid">
         <div class="area-de-login">
+                <div class="rol-sm-4" style="margin-left: 90px; font-weight: 700; color: darkgreen;">Login</div>
+                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">E-mail</div>
                 <div class="rol-sm-4">
                         <img src="/front/mídias/icon-email2.png"> 
                         <input type="email" name="email"  placeholder="E-mail" id="cadastro-email">
                 </div>
+                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Senha</div>
                 <div class="rol-sm-4">
                         <img src="/front/mídias/icon-senha.png"> 
                         <input type="password" name="senha" placeholder="Senha" id="cadastro-senha">
+                </div>
+                <div class="rol-sm-4"><a href="#" style="color: purple;">Esqueci minha senha.</a></div>
+                <div class="rol-sm-4">
+                        <button id="btn-cadastrar">Entrar na conta</button>
                 </div>
         </div>
 </div>

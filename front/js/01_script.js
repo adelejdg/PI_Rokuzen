@@ -3,17 +3,23 @@ function isUserLoggedIn() {
     return localStorage.getItem('rokuzen_current_user') !== null;
 }
 
-function mostrarPopUpCadastro() {
-    const btnLogin = document.getElementById('acessar-conta');
-    if (isUserLoggedIn() === false) {
-        
-    }
-}
+//criar uma função para verificar se o usuário está logado, 
+// se sim, mostrar a opção de meus dados e etc,
+// se não, mostrar o pop-up de cadastro 
+//VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+//function mostrarPopUpCadastro() {
+//    const btnLogin = document.getElementById('acessar-conta');
+//    if (isUserLoggedIn() === false) {
+//        alert('Você já está logado');
+//    }
+//}
+
+//criar uma função p mostrar o nome na msg de olá no pop-up dps de logado/cadastrado
 
 // Função para atualizar a visibilidade dos elementos com base no status de login
 function updateLoginElements() {
-    const loginBtn = document.getElementById('btn-login');
-    const loginCta = document.getElementById('login-cta');
+    const loginBtn = document.getElementById('acessar-conta');
+    const loginCta = document.getElementById('criar-conta');
     const loggedInElements = document.querySelectorAll('.btn-logged-in');
 
     if (isUserLoggedIn()) {
@@ -185,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function saveUser(user) { const raw = localStorage.getItem('rokuzen_users'); const users = raw ? JSON.parse(raw) : []; const exists = users.some(u => u.email === user.email); if (exists) return { ok: false, reason: 'E-mail já cadastrado.' }; users.push(user); localStorage.setItem('rokuzen_users', JSON.stringify(users)); return { ok: true }; }
     function renderGreeting() { const el = document.getElementById('header-greeting'); if (!el) return; const raw = localStorage.getItem('rokuzen_current_user'); if (!raw) { el.textContent = ''; el.classList.remove('is-visible'); el.style.display = 'none'; return; } const current = JSON.parse(raw); el.textContent = `Olá, ${current.nome}`; el.classList.add('is-visible'); el.style.display = 'block'; }
     renderGreeting();
-    function updateAuthElements() { const raw = localStorage.getItem('rokuzen_current_user'); const isLogged = !!raw; const loginBtn = document.getElementById('btn-login'); const loginCta = document.getElementById('login-cta'); const loggedInElements = document.querySelectorAll('.btn-logged-in'); if (isLogged) { if (loginBtn) loginBtn.style.display = 'none'; if (loginCta) loginCta.style.display = 'none'; loggedInElements.forEach(el => { el.style.display = 'block'; }); } else { if (loginBtn) loginBtn.style.display = 'block'; if (loginCta) loginCta.style.display = 'block'; loggedInElements.forEach(el => { el.style.display = 'none'; }); } }
+    function updateAuthElements() { const raw = localStorage.getItem('rokuzen_current_user'); const isLogged = !!raw; const loginBtn = document.getElementById('btn-login'); const loginCta = document.getElementById('criar-conta'); const loggedInElements = document.querySelectorAll('.btn-logged-in'); if (isLogged) { if (loginBtn) loginBtn.style.display = 'none'; if (loginCta) loginCta.style.display = 'none'; loggedInElements.forEach(el => { el.style.display = 'block'; }); } else { if (loginBtn) loginBtn.style.display = 'block'; if (loginCta) loginCta.style.display = 'block'; loggedInElements.forEach(el => { el.style.display = 'none'; }); } }
     updateAuthElements();
     const formCadastro = document.getElementById('form-cadastro');
     const erroCadastro = document.getElementById('cad-erro');
