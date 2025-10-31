@@ -47,34 +47,6 @@ nav {
     gap: 16px;
 }
 
-/* #header-pesquisa form {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-#header-pesquisa {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-#header-pesquisa input[type="text"] {
-    height: 28px;
-    width: 200px;
-    padding: 0 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-}
-
-#header-pesquisa button {
-    height: 30px;
-    background: transparent;
-    border: none;
-    border-radius: 50%;
-    padding: 4px;
-} */
-
 @media (max-width: 768px) {
     header {
         height: auto;
@@ -156,6 +128,7 @@ nav a:hover {
 
 /*deixar o pop-up de cadastro e login mais bonitinho depois. colocar mascara de telefone dps/////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .area-de-cadastro {
+    display: none;
     background-color: white;
     border-radius: 10px;
     width: 250px;
@@ -180,6 +153,7 @@ nav a:hover {
 }
 
 .area-de-login {
+    display: none;
     background-color: white;
     border-radius: 10px;
     width: 250px;

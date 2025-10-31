@@ -182,23 +182,58 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     const loginModal = document.getElementById('modal-login');
     const signupModal = document.getElementById('modal-cadastro');
-    function openModal(modal) { if (!modal) return; modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false'); }
-    function closeModal(modal) { if (!modal) return; modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true'); }
-    document.querySelectorAll('.btn-access-account:not(.btn-block)').forEach(function (el) { el.addEventListener('click', function (e) { e.preventDefault(); openModal(loginModal); }); });
-    document.querySelectorAll('.link-start-here').forEach(function (el) { el.addEventListener('click', function (e) { e.preventDefault(); openModal(signupModal); }); });
-    document.querySelectorAll('[data-close="modal"]').forEach(function (el) { el.addEventListener('click', function () { const modal = el.closest('.auth-modal'); closeModal(modal); }); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { [loginModal, signupModal].forEach(closeModal); } });
-    function saveUser(user) { const raw = localStorage.getItem('rokuzen_users'); const users = raw ? JSON.parse(raw) : []; const exists = users.some(u => u.email === user.email); if (exists) return { ok: false, reason: 'E-mail já cadastrado.' }; users.push(user); localStorage.setItem('rokuzen_users', JSON.stringify(users)); return { ok: true }; }
+    
+    function openModal(modal) { 
+        if (!modal) return; modal.classList.add('is-open'); 
+        modal.setAttribute('aria-hidden', 'false'); 
+    }
+
+    function closeModal(modal) { 
+        if (!modal) return; modal.classList.remove('is-open'); 
+        modal.setAttribute('aria-hidden', 'true'); 
+    }
+    
+    document.querySelectorAll('.btn-access-account:not(.btn-block)').forEach(function (el) { 
+        el.addEventListener('click', function (e) { e.preventDefault(); openModal(loginModal); }); 
+    });
+
+    document.querySelectorAll('.link-start-here').forEach(function (el) { 
+        el.addEventListener('click', function (e) { e.preventDefault(); openModal(signupModal); }); 
+    });
+
+    document.querySelectorAll('[data-close="modal"]').forEach(function (el) { 
+        el.addEventListener('click', function () { 
+            const modal = el.closest('.auth-modal'); closeModal(modal); 
+        });
+    });
+
+    document.addEventListener('keydown', function (e) { 
+        if (e.key === 'Escape') { [loginModal, signupModal].forEach(closeModal); } 
+    });
+
+    function saveUser(user) { 
+        const raw = localStorage.getItem('rokuzen_users'); 
+        const users = raw ? JSON.parse(raw) : []; 
+        const exists = users.some(u => u.email === user.email); 
+        if (exists) return { ok: false, reason: 'E-mail já cadastrado.' }; 
+        users.push(user); 
+        localStorage.setItem('rokuzen_users', JSON.stringify(users)); 
+        return { ok: true }; 
+    }
+
     function renderGreeting() { 
         const el = document.getElementById('header-greeting'); 
-        if (!el) return; const raw = localStorage.getItem('rokuzen_current_user'); 
-        if (!raw) { el.textContent = ''; el.classList.remove('is-visible'); 
+        if (!el) return; 
+        const raw = localStorage.getItem('rokuzen_current_user'); 
+        if (!raw) { el.textContent = ''; 
+        el.classList.remove('is-visible'); 
         el.style.display = 'none'; 
         return; } 
-    const current = JSON.parse(raw); 
-    el.textContent = `Olá, ${current.nome}`; 
-    el.classList.add('is-visible'); 
-    el.style.display = 'block'; }
+        const current = JSON.parse(raw); 
+        el.textContent = `Olá, ${current.nome}`; 
+        el.classList.add('is-visible'); 
+        l.style.display = 'block'; 
+    }
     
     renderGreeting();
     
@@ -224,11 +259,41 @@ document.addEventListener('DOMContentLoaded', function () {
     
     const formCadastro = document.getElementById('form-cadastro');
     const erroCadastro = document.getElementById('cad-erro');
-    if (formCadastro) { formCadastro.addEventListener('submit', function (e) { e.preventDefault(); const nome = /** @type {HTMLInputElement} */(document.getElementById('cad-nome')).value.trim(); const email = /** @type {HTMLInputElement} */(document.getElementById('cad-email')).value.trim(); const telefone = /** @type {HTMLInputElement} */(document.getElementById('cad-telefone')).value.trim(); const senha = /** @type {HTMLInputElement} */(document.getElementById('cad-senha')).value; const confirmar = /** @type {HTMLInputElement} */(document.getElementById('cad-confirmar')).value; if (senha !== confirmar) { erroCadastro.classList.add('is-visible'); return; } erroCadastro.classList.remove('is-visible'); const result = saveUser({ nome, email, telefone, senha }); if (!result.ok) { alert(result.reason); return; } localStorage.setItem('rokuzen_current_user', JSON.stringify({ nome, email })); renderGreeting(); updateAuthElements(); closeModal(signupModal); alert('Cadastro realizado com sucesso!'); }); }
+    if (formCadastro) { 
+        formCadastro.addEventListener('submit', function (e) { 
+            e.preventDefault(); 
+            const nome = /** @type {HTMLInputElement} */(document.getElementById('cad-nome')).value.trim(); 
+            const email = /** @type {HTMLInputElement} */(document.getElementById('cad-email')).value.trim(); 
+            const telefone = /** @type {HTMLInputElement} */(document.getElementById('cad-telefone')).value.trim(); 
+            const senha = /** @type {HTMLInputElement} */(document.getElementById('cad-senha')).value; 
+            const confirmar = /** @type {HTMLInputElement} */(document.getElementById('cad-confirmar')).value; if (senha !== confirmar) { erroCadastro.classList.add('is-visible'); return; } 
+            erroCadastro.classList.remove('is-visible'); 
+            const result = saveUser({ nome, email, telefone, senha }); 
+            if (!result.ok) { alert(result.reason); return; } 
+            localStorage.setItem('rokuzen_current_user', JSON.stringify({ nome, email })); 
+            renderGreeting(); 
+            updateAuthElements(); 
+            closeModal(signupModal); 
+            alert('Cadastro realizado com sucesso!'); 
+        }); 
+    }
+
     const formLogin = document.getElementById('form-login');
-    if (formLogin) { formLogin.addEventListener('submit', function (e) { e.preventDefault(); const email = /** @type {HTMLInputElement} */(document.getElementById('login-email')).value.trim(); const senha = /** @type {HTMLInputElement} */(document.getElementById('login-senha')).value; const raw = localStorage.getItem('rokuzen_users'); const users = raw ? JSON.parse(raw) : []; const user = users.find(u => u.email === email && u.senha === senha); if (!user) { alert('E-mail ou senha inválidos.'); return; } localStorage.setItem('rokuzen_current_user', JSON.stringify({ nome: user.nome, email: user.email })); renderGreeting(); updateAuthElements(); closeModal(loginModal); }); }
+    if (formLogin) { 
+        formLogin.addEventListener('submit', function (e) { 
+            e.preventDefault(); 
+            const email = /** @type {HTMLInputElement} */(document.getElementById('login-email')).value.trim(); 
+            const senha = /** @type {HTMLInputElement} */(document.getElementById('login-senha')).value; 
+            const raw = localStorage.getItem('rokuzen_users'); 
+            const users = raw ? JSON.parse(raw) : []; 
+            const user = users.find(u => u.email === email && u.senha === senha); 
+            if (!user) { 
+                alert('E-mail ou senha inválidos.'); 
+                return; 
+            } 
+            localStorage.setItem('rokuzen_current_user', JSON.stringify({ nome: user.nome, email: user.email })); 
+            renderGreeting(); updateAuthElements(); closeModal(loginModal); 
+        }); 
+    }
     const dropdown = document.querySelector('.dropdown-conteudo');
 });
-
-
-
