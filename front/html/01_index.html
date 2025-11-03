@@ -378,8 +378,7 @@
                 <div class="auth-dialog">
                         <div class="auth-header">
                                 <h3 class="auth-title">Acessar minha conta</h3>
-                                <button class="auth-close" type="button" data-close="modal"
-                                        aria-label="Fechar">✕</button>
+                                <button class="auth-close" type="button" data-close="modal" aria-label="Fechar">✕</button>
                         </div>
                         <div class="auth-body">
                                 <form id="form-login" class="auth-form" novalidate>
@@ -406,51 +405,63 @@
 
 <!-- pop-up de cadastrooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo -->
 <div class="container-fluid">
-        <div class="area-de-cadastro">
-                <div class="rol-sm-4" style="margin-left: 75px; font-weight: 700; color: darkgreen;">Cadastro</div>
-                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Nome completo</div>
-                <div class="rol-sm-4">
-                        <img src="/front/mídias/icon-nome.png"> 
-                        <input type="text" name="nome" placeholder="Nome completo" id="cadastro-nome">
-                </div>
-                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">E-mail</div>
-                <div class="rol-sm-4">
-                        <img src="/front/mídias/icon-email2.png"> 
-                        <input type="email" name="email"  placeholder="E-mail" id="cadastro-email">
-                </div>
-                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Nº de telefone</div>
-                <div class="rol-sm-4">
-                        <img src="/front/mídias/icon-telefone.png"> 
-                        <input type="tel" name="numero" placeholder="Nº do telefone" id="cadastro-numero">
-                </div>
-                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Senha</div>
-                <div class="rol-sm-4">
-                        <img src="/front/mídias/icon-senha.png"> 
-                        <input type="password" name="senha" placeholder="Senha" id="cadastro-senha">
-                </div>
-                <div class="rol-sm-4">
-                        <button id="btn-cadastrar">Criar conta</button>
+        <div id="modal-cadastro" class="auth-modal" aria-hidden="true" role="dialog" aria-modal="true">
+                <div class="area-de-cadastro">
+                        <div style="margin-bottom: 30px;" class="rol-sm-4">
+                                <div style="float: left; margin-left: 100px; font-weight: 700; color: darkgreen;">Cadastro</div>
+                                <!-- fazer o botão de fechar funcional -->
+                                <img style="float: right;" src="/front/mídias/icon-fechar.png" alt="fechar">
+                        </div>
+                        <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Nome completo</div>
+                        <div class="rol-sm-4">
+                                <img src="/front/mídias/icon-nome.png"> 
+                                <input type="text" name="nome" placeholder="Nome completo" id="cadastro-nome">
+                        </div>
+                        <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">E-mail</div>
+                        <div class="rol-sm-4">
+                                <img src="/front/mídias/icon-email2.png"> 
+                                <input type="email" name="email"  placeholder="E-mail" id="cadastro-email">
+                        </div>
+                        <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Nº de telefone</div>
+                        <div class="rol-sm-4">
+                                <img src="/front/mídias/icon-telefone.png"> 
+                                <input type="tel" name="numero" placeholder="Nº do telefone" id="cadastro-numero">
+                        </div>
+                        <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Senha</div>
+                        <div class="rol-sm-4">
+                                <img src="/front/mídias/icon-senha.png"> 
+                                <input type="password" name="senha" placeholder="Senha" id="cadastro-senha">
+                        </div>
+                        <div class="rol-sm-4 col-sm-12">
+                                <button id="btn-cadastrar">Criar conta</button>
+                        </div>
                 </div>
         </div>
 </div>
 
 <!-- pop-up de loginnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn -->
 <div class="container-fluid">
-        <div class="area-de-login">
-                <div class="rol-sm-4" style="margin-left: 90px; font-weight: 700; color: darkgreen;">Login</div>
-                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">E-mail</div>
-                <div class="rol-sm-4">
-                        <img src="/front/mídias/icon-email2.png"> 
-                        <input type="email" name="email"  placeholder="E-mail" id="cadastro-email">
-                </div>
-                <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Senha</div>
-                <div class="rol-sm-4">
-                        <img src="/front/mídias/icon-senha.png"> 
-                        <input type="password" name="senha" placeholder="Senha" id="cadastro-senha">
-                </div>
-                <div class="rol-sm-4"><a href="#" style="color: purple;">Esqueci minha senha.</a></div>
-                <div class="rol-sm-4">
-                        <button id="btn-cadastrar">Entrar na conta</button>
+        <div id="modal-login" class="auth-modal" aria-hidden="true" role="dialog" aria-modal="true">
+                <div class="area-de-login">
+                        <div style="margin-bottom: 30px;" class="rol-sm-4">
+                                <div style="float: left;margin-left: 90px; font-weight: 700; color: darkgreen;">Login</div>
+                                <!-- fazer o botão de fechar funcional -->
+                                <img style="float: right;" src="/front/mídias/icon-fechar.png" alt="fechar">
+                        </div>
+                        <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">E-mail</div>
+                        <div class="rol-sm-4">
+                                <img src="/front/mídias/icon-email2.png"> 
+                                <input type="email" name="email"  placeholder="E-mail" id="cadastro-email">
+                        </div>
+                        <div class="rol-sm-4" style="color: darkgreen; font-weight: 600;">Senha</div>
+                        <div class="rol-sm-4">
+                                <img src="/front/mídias/icon-senha.png"> 
+                                <input type="password" name="senha" placeholder="Senha" id="cadastro-senha">
+                        </div>
+                        <div class="rol-sm-4"><a href="#" style="color: purple;">Esqueci minha senha.</a></div>
+                        <div class="rol-sm-4">
+                                <button id="btn-cadastrar">Entrar na conta</button>
+                        </div>
                 </div>
         </div>
 </div>
@@ -458,43 +469,43 @@
         <!-- <div id="modal-cadastro" class="auth-modal" aria-hidden="true" role="dialog" aria-modal="true">
                 <div class="auth-overlay" data-close="modal"></div>
                 <div class="auth-dialog">
+
                         <div class="auth-header">
                                 <h3 class="auth-title">Criar conta</h3>
-                                <button class="auth-close" type="button" data-close="modal"
-                                        aria-label="Fechar">✕</button>
+                                <button class="auth-close" type="button" data-close="modal" aria-label="Fechar">✕</button>
                         </div>
+
                         <div class="auth-body">
                                 <form id="form-cadastro" class="auth-form" novalidate>
                                         <div class="field-group">
                                                 <label for="cad-nome">Nome</label>
-                                                <input type="text" id="cad-nome" name="nome" autocomplete="name"
-                                                        required>
+                                                <input type="text" id="cad-nome" name="nome" autocomplete="name" required>
                                         </div>
+
                                         <div class="field-group">
                                                 <label for="cad-email">E-mail</label>
-                                                <input type="email" id="cad-email" name="email" autocomplete="email"
-                                                        required>
+                                                <input type="email" id="cad-email" name="email" autocomplete="email" required>
                                         </div>
+
                                         <div class="field-group">
                                                 <label for="cad-telefone">Telefone</label>
-                                                <input type="tel" id="cad-telefone" name="telefone" autocomplete="tel"
-                                                        required>
+                                                <input type="tel" id="cad-telefone" name="telefone" autocomplete="tel" required>
                                         </div>
+
                                         <div class="field-group">
                                                 <label for="cad-senha">Senha</label>
-                                                <input type="password" id="cad-senha" name="senha"
-                                                        autocomplete="new-password" required>
+                                                <input type="password" id="cad-senha" name="senha" autocomplete="new-password" required>
                                         </div>
+
                                         <div class="field-group">
                                                 <label for="cad-confirmar">Confirmar senha</label>
-                                                <input type="password" id="cad-confirmar" name="confirmar"
-                                                        autocomplete="new-password" required>
+                                                <input type="password" id="cad-confirmar" name="confirmar" autocomplete="new-password" required>
                                                 <div id="cad-erro" class="auth-error">As senhas não coincidem.</div>
                                         </div>
+
                                         <div class="auth-actions">
                                                 <button type="submit" class="auth-btn-primary">Criar conta</button>
-                                                <button type="button" class="auth-btn-secondary"
-                                                        data-close="modal">Cancelar</button>
+                                                <button type="button" class="auth-btn-secondary" data-close="modal">Cancelar</button>
                                         </div>
                                 </form>
                         </div>

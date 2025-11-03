@@ -44,6 +44,7 @@ function performLogout() {
     }
     updateLoginElements();
     if (typeof updateAuthElements === 'function') updateAuthElements();
+    // trocar pelo alert do bootstrap
     alert('Você saiu da conta.');
     window.location.href = window.location.href;
 }
@@ -184,20 +185,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const signupModal = document.getElementById('modal-cadastro');
     
     function openModal(modal) { 
-        if (!modal) return; modal.classList.add('is-open'); 
+        if (!modal) return; 
+        modal.classList.add('is-open'); 
         modal.setAttribute('aria-hidden', 'false'); 
     }
 
     function closeModal(modal) { 
-        if (!modal) return; modal.classList.remove('is-open'); 
+        if (!modal) return; 
+        modal.classList.remove('is-open'); 
         modal.setAttribute('aria-hidden', 'true'); 
     }
     
-    document.querySelectorAll('.btn-access-account:not(.btn-block)').forEach(function (el) { 
+    document.querySelectorAll('#acessar-conta').forEach(function (el) { 
         el.addEventListener('click', function (e) { e.preventDefault(); openModal(loginModal); }); 
     });
 
-    document.querySelectorAll('.link-start-here').forEach(function (el) { 
+    document.querySelectorAll('#criar-conta').forEach(function (el) { 
         el.addEventListener('click', function (e) { e.preventDefault(); openModal(signupModal); }); 
     });
 
@@ -274,6 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
             renderGreeting(); 
             updateAuthElements(); 
             closeModal(signupModal); 
+            //trocar pelo alert do bootstrap
             alert('Cadastro realizado com sucesso!'); 
         }); 
     }
@@ -292,7 +296,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return; 
             } 
             localStorage.setItem('rokuzen_current_user', JSON.stringify({ nome: user.nome, email: user.email })); 
-            renderGreeting(); updateAuthElements(); closeModal(loginModal); 
+            renderGreeting(); 
+            updateAuthElements(); closeModal(loginModal); 
         }); 
     }
     const dropdown = document.querySelector('.dropdown-conteudo');
