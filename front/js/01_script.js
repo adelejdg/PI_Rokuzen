@@ -2,6 +2,7 @@
 //criar uma função para verificar se o usuário está logado, 
 // se sim, mostrar a opção de meus dados e etc,
 // se não, mostrar o pop-up de cadastro 
+//colocar os alertas
 
 // Função para verificar se o usuário está logado
 function isUserLoggedIn() {
