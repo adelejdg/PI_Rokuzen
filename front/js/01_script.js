@@ -1,20 +1,12 @@
+//criar uma função p mostrar o nome na msg de olá no pop-up dps de logado/cadastrado
+//criar uma função para verificar se o usuário está logado, 
+// se sim, mostrar a opção de meus dados e etc,
+// se não, mostrar o pop-up de cadastro 
+
 // Função para verificar se o usuário está logado
 function isUserLoggedIn() {
     return localStorage.getItem('rokuzen_current_user') !== null;
 }
-
-//criar uma função para verificar se o usuário está logado, 
-// se sim, mostrar a opção de meus dados e etc,
-// se não, mostrar o pop-up de cadastro 
-//VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-//function mostrarPopUpCadastro() {
-//    const btnLogin = document.getElementById('acessar-conta');
-//    if (isUserLoggedIn() === false) {
-//        alert('Você já está logado');
-//    }
-//}
-
-//criar uma função p mostrar o nome na msg de olá no pop-up dps de logado/cadastrado
 
 // Função para atualizar a visibilidade dos elementos com base no status de login
 function updateLoginElements() {

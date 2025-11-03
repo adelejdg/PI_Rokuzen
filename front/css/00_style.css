@@ -1,3 +1,6 @@
+ /* remover classes desnecessárias dps */
+ /* deixar responsivo com @media dps */
+ /* colocar máscara p/ celular e de e-mail válido nos formulários de cadastro e login */
  * h3 {
     font-family: "Marcellus SC", cursive;
     color: rgb(27, 59, 0);
@@ -126,7 +129,6 @@ nav a:hover {
     display: block;
 }
 
-/*deixar o pop-up de cadastro e login mais bonitinho depois. colocar mascara de telefone dps/////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .area-de-cadastro {
     display: block;
     background-color: white;
