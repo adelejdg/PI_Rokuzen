@@ -134,7 +134,7 @@ nav a:hover {
     width: 300px;
     height: 315px;
     padding: 5px;
-    box-shadow: 0px 4px 8px 0px rgba(10, 71, 15, 0.3);
+    box-shadow: 0px 8px 12px 0px rgba(3, 32, 6, 0.808);
 }
 
 .area-de-cadastro input{
@@ -169,8 +169,9 @@ nav a:hover {
     background-color: white;
     border-radius: 10px;
     width: 300px;
+    height: 220px;
     padding: 5px;
-    box-shadow: 0px 4px 8px 0px rgba(10, 71, 15, 0.3);
+    box-shadow: 0px 8px 12px 0px rgba(3, 32, 6, 0.808);
 }
 
 .area-de-login input {
@@ -178,15 +179,26 @@ nav a:hover {
     margin-bottom: 5px;
     border-color: #cacaca73;
     border-radius: 5px;
+    width: 240px;
+}
+
+.area-de-login div{
+    margin-left: 5px;
 }
 
 .area-de-login button{
-    margin-top: 5px;
+    margin-top: 8px;
+    margin-left: 18px;
     border-radius: 5px;
     color: #1B5E20;
     background-color: #8BC34A;
     border-style: none;
     width: 240px;
+}
+
+.area-de-login button:hover{
+    background-color: #2a8830;
+    color: #8BC34A;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
