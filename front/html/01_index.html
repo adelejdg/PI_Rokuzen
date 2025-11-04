@@ -455,31 +455,31 @@
                         <div class="area-de-cadastro">
                                 <div style="margin-bottom: 30px;" class="row-sm-4">
                                         <div style="float: left; margin-left: 100px; font-weight: 700; color: darkgreen;">Cadastro</div>
-                                        <!-- fazer o botão de fechar funcional -->
                                         <span class="auth-close" data-close="modal" aria-label="Fechar"><img style="float: right;" src="/front/mídias/icon-fechar.png" alt="fechar"></span>
                                 </div>
                                 <div class="row-sm-4" style="color: darkgreen; font-weight: 600;">Nome completo</div>
                                 <div class="row-sm-4">
                                         <img src="/front/mídias/icon-nome.png"> 
-                                        <input type="text" name="nome" placeholder="Nome completo" id="cadastro-nome">
+                                        <input type="text" id="cad-nome" placeholder="Nome completo" name="nome" autocomplete="name" required>
                                 </div>
                                 <div class="row-sm-4" style="color: darkgreen; font-weight: 600;">E-mail</div>
                                 <div class="row-sm-4">
-                                        <img src="/front/mídias/icon-email2.png"> 
-                                        <input type="email" name="email"  placeholder="E-mail" id="cadastro-email">
+                                        <img src="/front/mídias/icon-email2.png">
+                                        <input type="email" id="cad-email" placeholder="E-mail" name="email" autocomplete="email" required>
                                 </div>
                                 <div class="row-sm-4" style="color: darkgreen; font-weight: 600;">Nº de telefone</div>
                                 <div class="row-sm-4">
-                                        <img src="/front/mídias/icon-telefone.png"> 
-                                        <input type="tel" name="numero" placeholder="Nº do telefone" id="cadastro-numero">
+                                        <img src="/front/mídias/icon-telefone.png">
+                                        <input type="tel" id="cad-telefone" placeholder="Nº do telefone" name="telefone" autocomplete="tel" required>
                                 </div>
                                 <div class="row-sm-4" style="color: darkgreen; font-weight: 600;">Senha</div>
                                 <div class="row-sm-4">
                                         <img src="/front/mídias/icon-senha.png"> 
-                                        <input type="password" name="senha" placeholder="Senha" id="cadastro-senha">
+                                        <input type="password" id="cad-confirmar" placeholder="Senha" name="confirmar" autocomplete="new-password" required>
+                                        <div id="cad-erro" class="auth-error">As senhas não coincidem.</div>
                                 </div>
                                 <div class="row-sm-4 col-sm-12">
-                                        <button id="btn-cadastrar">Criar conta</button>
+                                        <button type="submit" id="btn-cadastrar">Criar conta</button>
                                 </div>
                         </div>
                 </form>
