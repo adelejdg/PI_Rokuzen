@@ -1,9 +1,3 @@
-//criar uma função p mostrar o nome na msg de olá no pop-up dps de logado/cadastrado
-//criar uma função para verificar se o usuário está logado, 
-// se sim, mostrar a opção de meus dados e etc,
-// se não, mostrar o pop-up de cadastro 
-//colocar os alertas
-
 // Função para verificar se o usuário está logado
 function isUserLoggedIn() {
     return localStorage.getItem('rokuzen_current_user') !== null;
@@ -40,7 +34,6 @@ function performLogout() {
     }
     updateLoginElements();
     if (typeof updateAuthElements === 'function') updateAuthElements();
-    // trocar pelo alert do bootstrap
     alert('Você saiu da conta.');
     window.location.href = window.location.href;
 }
