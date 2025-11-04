@@ -88,12 +88,12 @@
                                                                 <div class="dropdown"><mark style="color: purple; background-color: transparent;">Minha conta <i class="fa fa-caret-down"></i></mark>
                                                                         <div class="dropdown-conteudo">
                                                                                 <a href="#" id="acessar-conta"><i class="fa fa-caret-right"></i> Acessar minha conta</a>
-                                                                                <p style="font-size: 12px; color: gray; margin-top: 5px; height: 10px;">Não possui uma conta?</p>
+                                                                                <p id="texto-cad" style="font-size: 12px; color: gray; margin-top: 5px; height: 10px;">Não possui uma conta?</p>
                                                                                 <a href="#" id="criar-conta"><i class="fa fa-caret-right"></i> Criar conta</a>
                                                                                 
                                                                                 <!-- dps de logado -->
                                                                                 <div class="acesso-logado">
-                                                                                        <p style="color: purple; margin-bottom: 0;">Olá <span>nome_usuario</span>!</p>
+                                                                                        <p class="col-sm-4" style="color: purple; margin-bottom: 0;"><span style="width: 400px;" id="header-greeting">nome_usuario</span></p>
                                                                                         <a href="02_meusdados.html"><i class="fa fa-caret-right"></i> Meus Dados</a><br>
                                                                                         <a href="#"><i class="fa fa-caret-right"></i> Meus agendamentos</a><br>
                                                                                         <a href="#"><i class="fa fa-caret-right"></i> Estatísticas</a><br>
@@ -475,7 +475,12 @@
                                 <div class="row-sm-4" style="color: darkgreen; font-weight: 600;">Senha</div>
                                 <div class="row-sm-4">
                                         <img src="/front/mídias/icon-senha.png"> 
-                                        <input type="password" id="cad-confirmar" placeholder="Senha" name="confirmar" autocomplete="new-password" required>
+                                        <input type="password" id="cad-senha" placeholder="Senha" name="senha" autocomplete="new-password" required>
+                                </div>
+                                <div class="row-sm-4" style="color: darkgreen; font-weight: 600;">Confirmar a senha</div>
+                                <div class="row-sm-4">
+                                        <img src="/front/mídias/icon-senha.png"> 
+                                        <input type="password" id="cad-confirmar" placeholder="Confirme sua senha" name="confirmar" autocomplete="new-password" required>
                                         <div id="cad-erro" class="auth-error">As senhas não coincidem.</div>
                                 </div>
                                 <div class="row-sm-4 col-sm-12">
@@ -493,7 +498,6 @@
                         <div class="area-de-login">
                                 <div style="margin-bottom: 30px;" class="row-sm-4">
                                         <div style="float: left;margin-left: 110px; font-weight: 700; color: darkgreen;">Login</div>
-                                        <!-- fazer o botão de fechar funcional -->
                                         <span class="auth-close" data-close="modal" aria-label="Fechar"><img style="float: right;" src="/front/mídias/icon-fechar.png" alt="fechar"></span>
                                 </div>
                                 <div class="row-sm-4" style="color: darkgreen; font-weight: 600;">E-mail</div>

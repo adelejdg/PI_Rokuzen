@@ -13,15 +13,18 @@ function isUserLoggedIn() {
 function updateLoginElements() {
     const loginBtn = document.getElementById('acessar-conta');
     const loginCta = document.getElementById('criar-conta');
+    const loginTxt = document.getElementById('texto-cad');
     const depoisDeLogado = document.querySelectorAll('.acesso-logado');
 
     if (isUserLoggedIn()) {
         if (loginBtn) loginBtn.style.display = 'none';
         if (loginCta) loginCta.style.display = 'none';
+        if (loginTxt) loginTxt.style.display = 'none';
         depoisDeLogado.forEach(el => { el.style.display = 'block'; });
     } else {
         if (loginBtn) loginBtn.style.display = 'block';
         if (loginCta) loginCta.style.display = 'block';
+        if (loginTxt) loginTxt.style.display = 'block';
         depoisDeLogado.forEach(el => { el.style.display = 'none'; });
     }
 }
@@ -226,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
         el.style.display = 'none'; 
         return; } 
         const current = JSON.parse(raw); 
-        el.textContent = `Olá, ${current.nome}`; 
+        el.textContent = `Olá, ${current.nome}!`; 
         el.classList.add('is-visible'); 
         l.style.display = 'block'; 
     }
