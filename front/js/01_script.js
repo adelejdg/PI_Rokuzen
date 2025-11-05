@@ -9,12 +9,14 @@ function updateLoginElements() {
     const loginCta = document.getElementById('criar-conta');
     const loginTxt = document.getElementById('texto-cad');
     const depoisDeLogado = document.querySelectorAll('.acesso-logado');
+    const linkAgendamento = document.getElementById('agendar-horario-link');
 
     if (isUserLoggedIn()) {
         if (loginBtn) loginBtn.style.display = 'none';
         if (loginCta) loginCta.style.display = 'none';
         if (loginTxt) loginTxt.style.display = 'none';
         depoisDeLogado.forEach(el => { el.style.display = 'block'; });
+        if (linkAgendamento) linkAgendamento.href = '/front/html/03_meusagendamentos.html';
     } else {
         if (loginBtn) loginBtn.style.display = 'block';
         if (loginCta) loginCta.style.display = 'block';
