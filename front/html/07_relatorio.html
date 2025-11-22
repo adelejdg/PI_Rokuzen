@@ -11,6 +11,7 @@
   <title>Relatório de Sessões</title>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      const API = 'http://localhost:3000';
       const inicioEl = document.getElementById('rep-inicio');
       const fimEl = document.getElementById('rep-fim');
       const procEl = document.getElementById('rep-procedimento');
@@ -18,32 +19,100 @@
       const saida = document.getElementById('saida-relatorio');
       const btnFinalizar = document.getElementById('btn-finalizar-sessao');
 
+      // Verificar se está logado
+      const currentRaw = localStorage.getItem('rokuzen_current_user');
+      if (!currentRaw) {
+        alert('É preciso estar logado para acessar esta página.');
+        window.location.href = '/front/html/01_index.html';
+        return;
+      }
+      const current = JSON.parse(currentRaw);
+
       btnFinalizar.addEventListener('click', function () {
         const inicio = inicioEl.value;
         const fim = fimEl.value;
         const proc = procEl.value;
         const cliente = clienteEl.value;
-        if (!inicio || !fim || !proc || !cliente) { alert('Preencha todos os campos.'); return; }
-        const resumo = `Início: ${inicio} | Fim: ${fim} | Procedimento: ${proc} | Cliente: ${cliente}`;
-        saida.innerHTML = `<div class="finished">${resumo}</div>`;
-        // limpa campos
-        inicioEl.value = '';
-        fimEl.value = '';
-        procEl.value = '';
-        clienteEl.value = '';
+        
+        if (!inicio || !fim || !proc || !cliente) { 
+          alert('Preencha todos os campos.'); 
+          return; 
+        }
+        
+        // Obter data atual no formato YYYY-MM-DD
+        const hoje = new Date();
+        const data = hoje.toISOString().slice(0, 10);
+        
+        // Desabilitar botão durante o envio
+        btnFinalizar.disabled = true;
+        btnFinalizar.textContent = 'Salvando...';
+        
+        // Salvar no backend
+        fetch(API + '/relatorios/sessao', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            inicio,
+            fim,
+            procedimento: proc,
+            cliente,
+            massagistaEmail: current.email,
+            data
+          })
+        }).then(async r => {
+          const data = await r.json().catch(() => ({}));
+          if (r.ok && data.ok) {
+            const resumo = `Relatório salvo com sucesso!<br>Início: ${inicio} | Fim: ${fim} | Procedimento: ${proc} | Cliente: ${cliente}`;
+            saida.innerHTML = `<div class="finished" style="color: green; padding: 15px; background: #e8f5e9; border-radius: 8px; margin-top: 15px;">${resumo}</div>`;
+            // Limpa campos
+            inicioEl.value = '';
+            fimEl.value = '';
+            procEl.value = '';
+            clienteEl.value = '';
+          } else {
+            alert('Erro ao salvar o relatório. Tente novamente.');
+            saida.innerHTML = '';
+          }
+        }).catch(() => {
+          alert('Erro de rede. Verifique sua conexão.');
+          saida.innerHTML = '';
+        }).finally(() => {
+          btnFinalizar.disabled = false;
+          btnFinalizar.textContent = 'Finalizar sessão';
+        });
       });
     });
   </script>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script src="/front/js/01_script.js"></script>
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
+    
+    // Controle de acesso
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!isUserLoggedIn()) {
+        alert('Você precisa estar logado para acessar esta página.');
+        window.location.href = '/front/html/01_index.html';
+        return;
+      }
+      
+      if (!canAccessRelatorio()) {
+        alert('Você não tem permissão para acessar esta página. Apenas massagistas e administradores podem acessar.');
+        window.location.href = '/front/html/01_index.html';
+        return;
+      }
+    });
   </script>
 </head>
 
 <body>
 
-  <div class="container">
-    <h2>Relatório de Sessões</h2>
+  <div class="report-container">
+    <div class="report-header">
+      <h2>Relatório de Sessões</h2>
+      <p class="subtitle">Registre o resumo da sessão concluída</p>
+    </div>
+    <div class="report-content">
     <label for="rep-inicio">Início da sessão</label>
     <input type="time" id="rep-inicio">
     <label for="rep-fim">Fim da sessão</label>
@@ -53,10 +122,11 @@
     <label for="rep-cliente">Nome do cliente</label>
     <input type="text" id="rep-cliente" placeholder="Nome do cliente">
     <div class="actions">
-      <button type="button" id="btn-finalizar-sessao">Finalizar sessão</button>
-      <a href="02_meusdados.html"><button type="button">Voltar</button></a>
+      <button type="button" id="btn-finalizar-sessao" class="btn-primary">Finalizar sessão</button>
+      <a href="02_meusdados.html" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center;">Voltar</a>
     </div>
     <div id="saida-relatorio"></div>
+    </div>
   </div>
   <!-- vlibras -->
   <div vw class="enabled">

@@ -7,7 +7,24 @@
   <link rel="icon" href="/front/mídias/favicon.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/front/css/03_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="/front/js/01_script.js"></script>
+  <script>
+    // Garantir que as funções de permissão estejam disponíveis antes de carregar agendamentos.js
+    if (typeof canAccessTimer === 'undefined') {
+      function canAccessTimer() {
+        const userStr = localStorage.getItem('rokuzen_current_user');
+        if (!userStr) return false;
+        try {
+          const user = JSON.parse(userStr);
+          const tipo = user.tipo || (user.email ? (user.email.toLowerCase().split('@')[1] === 'massagista.com' || user.email.toLowerCase().split('@')[1] === 'admin.com' ? 'massagista' : 'cliente') : 'cliente');
+          return tipo === 'massagista' || tipo === 'admin';
+        } catch {
+          return false;
+        }
+      }
+    }
+  </script>
   <script src="/front/js/agendamentos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
@@ -15,36 +32,87 @@
 </head>
 
 <body>
-  <div class="container">
-    <h2>Meus agendamentos</h2>
+  <div class="bookings-container">
+    <div class="bookings-header">
+      <h1>Meus Agendamentos</h1>
+      <p class="subtitle">Visualize e gerencie seus agendamentos</p>
+    </div>
 
-    <div
-      style="margin-bottom: 12px; display:flex; gap:10px; justify-content:center; align-items:center; flex-wrap: wrap;">
-      <button onclick="window.location.href='04_agendar.html'">Novo agendamento</button>
-      <div class="week-controls" style="display:flex; gap:8px; align-items:center;">
-        <button id="week-prev" aria-label="Semana anterior">◀</button>
-        <div id="week-label" aria-live="polite"></div>
-        <button id="week-next" aria-label="Próxima semana">▶</button>
-        <button id="delete-mode" aria-pressed="false" title="Clique para ativar/desativar apagar horário">Apagar
-          horário</button>
+    <div class="bookings-content">
+      <!-- Visualização da Tabela Semanal (Agende seu horário) -->
+      <div id="schedule-view" style="display: none;">
+        <!-- Controles da Semana -->
+        <div class="week-controls-modern">
+          <button class="btn-modern btn-primary" onclick="window.location.href='04_agendar.html'">
+            <i class="fa fa-plus"></i> Novo Agendamento
+          </button>
+          <div class="week-navigation">
+            <button id="week-prev" class="btn-icon" aria-label="Semana anterior">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+            <div id="week-label" class="week-label" aria-live="polite"></div>
+            <button id="week-next" class="btn-icon" aria-label="Próxima semana">
+              <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="unit-filter-container">
+            <label for="unit-filter" style="margin-right: 8px; font-weight: 600; color: #1a1a1a;">Unidade:</label>
+            <select id="unit-filter" class="unit-filter-select">
+              <option value="all">Todas as unidades</option>
+              <option value="golden">Golden</option>
+              <option value="mooca">Mooca</option>
+              <option value="grand-plaza">Grand Plaza</option>
+              <option value="west-plaza">West Plaza</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Grade Semanal -->
+        <div class="week-grid-wrapper">
+          <table id="week-grid" aria-label="Agenda semanal">
+            <!-- Renderizado via JS -->
+          </table>
+        </div>
+
+        <!-- Detalhes do Agendamento -->
+        <div id="detalhes-agendamento" class="booking-details hidden" aria-live="polite"></div>
       </div>
-    </div>
 
-    <div id="week-grid-wrapper">
-      <table id="week-grid" aria-label="Agenda semanal">
-        <!-- Renderizado via JS -->
-      </table>
-    </div>
+      <!-- Visualização do Cliente (Meus Agendamentos) -->
+      <div id="my-bookings-view" style="display: none;">
+        <div class="bookings-actions" style="margin-bottom: 24px;">
+          <button class="btn-modern btn-primary" onclick="window.location.href='04_agendar.html'">
+            <i class="fa fa-plus"></i> Novo Agendamento
+          </button>
+        </div>
 
-    <div id="minhas-sessoes" class="hidden" style="margin-top:16px; text-align:left;">
-      <h3>Minhas sessões</h3>
-      <div id="lista-minhas-sessoes"></div>
-    </div>
+        <!-- Confirmados (Futuros) -->
+        <div class="bookings-section">
+          <h2 class="section-title" style="color: #2e7d32; margin-bottom: 16px;">
+            <i class="fa fa-calendar-check-o"></i> Confirmados
+          </h2>
+          <div id="confirmados-list" class="bookings-list">
+            <!-- Preenchido via JS -->
+          </div>
+        </div>
 
-    <div id="detalhes-agendamento" class="hidden" aria-live="polite"></div>
+        <!-- Realizados (Passados) -->
+        <div class="bookings-section" style="margin-top: 32px;">
+          <h2 class="section-title" style="color: #757575; margin-bottom: 16px;">
+            <i class="fa fa-calendar-times-o"></i> Realizados
+          </h2>
+          <div id="realizados-list" class="bookings-list">
+            <!-- Preenchido via JS -->
+          </div>
+        </div>
+      </div>
 
-    <div style="margin-top: 12px;">
-      <button onclick="window.location.href='01_index.html'">Voltar para a página inicial</button>
+      <!-- Botão Voltar -->
+      <div class="bookings-actions">
+        <button class="btn-modern btn-secondary" onclick="window.location.href='01_index.html'">
+          <i class="fa fa-arrow-left"></i> Voltar para a página inicial
+        </button>
+      </div>
     </div>
   </div>
 
@@ -55,6 +123,13 @@
       <div class="vw-plugin-top-wrapper"></div>
     </div>
   </div>
+
+  <script>
+    // Inicializar VLibras
+    if (window.VLibras && typeof window.VLibras.Widget === 'function') {
+      try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch {}
+    }
+  </script>
 </body>
 
 </html>

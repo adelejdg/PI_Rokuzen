@@ -28,7 +28,13 @@
                         <div class="col-sm-8">
                                 <nav>
                                         <div class="nav-top">
-                                                <div id="icones">
+                                                <div id="header-pesquisa">
+                                                        <form action="busca.html" method="get">
+                                                                <input type="text" name="q" placeholder="Buscar..." />
+                                                                <button type="submit"><i class="fa fa-search"></i></button>
+                                                        </form>
+                                                </div>
+                                                <div id="icones" class="social-icons-right">
                                                         <a href="https://rokuzen.com.br/feed/rss/" title="Assine nosso canal rss"><img
                                                                         src="/front/mídias/icon-rss.png" class="icon" alt="rss"></a>
                                                         <a href="mailto:contato@rokuzen.com.br" title="Email"><img
@@ -56,53 +62,32 @@
                                                         </div>
                                                 </a>
 
-                                                <a href="#.html">
-                                                        <div class="nav-item">
-                                                                <div class="dropdown">O que fazemos <i class="fa fa-caret-down"></i>
-                                                                        <div class="dropdown-conteudo">
-                                                                                <a href="#"><i class="fa fa-caret-right"></i> Eventos / In-company</a><br>
-                                                                                <a href="#"><i class="fa fa-caret-right"></i> Serviços</a>
-                                                                        </div>
-                                                                </div>
-                                                        </div>
-                                                </a>
-
-                                                <a href="#.html">
-                                                        <div class="nav-item">
-                                                                <div class="dropdown">Onde estamos <i class="fa fa-caret-down"></i>
-                                                                        <div class="dropdown-conteudo">
-                                                                                <a href="#"><i class="fa fa-caret-right"></i> Unidades</a><br>
-                                                                                <a href="#"><i class="fa fa-caret-right"></i> Nossos clientes</a><br>
-                                                                                <a href="#"><i class="fa fa-caret-right"></i> Nossos parceiros</a>
-                                                                        </div>
-                                                                </div>
-                                                        </div>
-                                                </a>
-
                                                 <a id="agendar-horario-link" href="#.html">
                                                         <div class="nav-item">Agende seu horário</div>
                                                 </a>
 
-                                                <a href="#.hmtl">
-                                                        <div class="nav-item">
-                                                                <div class="dropdown"><mark style="color: purple; background-color: transparent;">Minha conta <i class="fa fa-caret-down"></i></mark>
-                                                                        <div class="dropdown-conteudo">
-                                                                                <a href="#" id="acessar-conta"><i class="fa fa-caret-right"></i> Acessar minha conta</a>
-                                                                                <p id="texto-cad" style="font-size: 12px; color: gray; margin-top: 5px; height: 10px;">Não possui uma conta?</p>
-                                                                                <a href="#" id="criar-conta"><i class="fa fa-caret-right"></i> Criar conta</a>
-                                                                                
-                                                                                <!-- dps de logado -->
-                                                                                <div class="acesso-logado">
-                                                                                        <p class="col-sm-4" style="color: purple; margin-bottom: 0;"><span style="width: 400px;" id="header-greeting">nome_usuario</span></p>
-                                                                                        <a href="02_meusdados.html"><i class="fa fa-caret-right"></i> Meus Dados</a><br>
+                                                <div class="nav-item">
+                                                        <div class="dropdown no-hover" id="dropdown-account" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false"><span id="btn-minha-conta" style="color: purple; background-color: transparent;">Minha conta <i class="fa fa-caret-down"></i></span>
+                                                                <div class="dropdown-conteudo">
+                                                                        <a href="#" id="acessar-conta"><i class="fa fa-caret-right"></i> Acessar minha conta</a>
+                                                                        <p id="texto-cad" style="font-size: 12px; color: gray; margin-top: 5px; height: 10px;">Não possui uma conta?</p>
+                                                                        <a href="#" id="criar-conta"><i class="fa fa-caret-right"></i> Criar conta</a>
+                                                                        
+                                                                        <!-- dps de logado -->
+                                                                        <div class="acesso-logado">
+                                                                                <p class="col-sm-4" style="color: purple; margin-bottom: 0;"><span style="width: 400px;" id="header-greeting">nome_usuario</span></p>
+                                                                                <a href="02_meusdados.html"><i class="fa fa-caret-right"></i> Meus Dados</a><br>
                                                                                         <a href="/front/html/03_meusagendamentos.html"><i class="fa fa-caret-right"></i> Meus agendamentos</a><br>
-                                                                                        <a href="/front/html/08_estatistica.html"><i class="fa fa-caret-right"></i> Estatísticas</a><br>
-                                                                                        <a href="#" id="btn-logout" style="font-size: 12px; color: purple; text-decoration: underline; margin-left: 20px;">Sair da conta</a>
+                                                                                        <a href="/front/html/07_relatorio.html" id="link-relatorio" style="display: none;"><i class="fa fa-caret-right"></i> Relatório de Sessão</a><br id="br-relatorio" style="display: none;">
+                                                                                        <a href="/front/html/08_estatistica.html" id="link-estatisticas" style="display: none;"><i class="fa fa-caret-right"></i> Estatísticas</a><br id="br-estatisticas" style="display: none;">
+                                                                                        <a href="/front/html/09_escalas.html" id="link-escalas" style="display: none;"><i class="fa fa-caret-right"></i> Escalas</a><br id="br-escalas" style="display: none;">
+                                                                                        <a href="/front/html/10_clientes.html" id="link-clientes" style="display: none;"><i class="fa fa-caret-right"></i> Clientes</a><br id="br-clientes" style="display: none;">
+                                                                                        <a href="/front/html/11_pontuacao.html" id="link-pontuacao" style="display: none;"><i class="fa fa-caret-right"></i> Pontuação</a><br id="br-pontuacao" style="display: none;">
+                                                                                        <a href="#" id="btn-logout" style="color: purple; text-decoration: underline; margin-left: 20px;">Sair da conta</a>
                                                                                 </div>
                                                                         </div>
                                                                 </div>
                                                         </div>
-                                                </a>
                                         </span>
                                 </nav>
                         </div>
@@ -525,6 +510,45 @@
                         <div class="vw-plugin-top-wrapper"></div>
                 </div>
         </div>
+
+        <!-- Widget de Acessibilidade para Daltônicos -->
+        <div id="acessibilidade-widget" class="acessibilidade-widget">
+                <button id="acessibilidade-btn" class="acessibilidade-btn" aria-label="Acessibilidade para daltônicos" title="Acessibilidade para daltônicos">
+                        <i class="fa fa-adjust" aria-hidden="true"></i>
+                </button>
+                <div id="acessibilidade-panel" class="acessibilidade-panel" style="display: none;">
+                        <div class="acessibilidade-header">
+                                <h3>Acessibilidade</h3>
+                                <button id="acessibilidade-close" class="acessibilidade-close" aria-label="Fechar">×</button>
+                        </div>
+                        <div class="acessibilidade-body">
+                                <p class="acessibilidade-label">Ajustar contraste e cores:</p>
+                                <div class="acessibilidade-options">
+                                        <button class="acessibilidade-option" data-filter="normal">Normal</button>
+                                        <button class="acessibilidade-option" data-filter="protanopia">Protanopia</button>
+                                        <button class="acessibilidade-option" data-filter="deuteranopia">Deuteranopia</button>
+                                        <button class="acessibilidade-option" data-filter="tritanopia">Tritanopia</button>
+                                        <button class="acessibilidade-option" data-filter="high-contrast">Alto Contraste</button>
+                                        <button class="acessibilidade-option" data-filter="grayscale">Escala de Cinza</button>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        
+        <!-- SVG Filters para daltonismo (oculto) -->
+        <svg class="acessibilidade-filters" aria-hidden="true">
+                <defs>
+                        <filter id="protanopia">
+                                <feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0"/>
+                        </filter>
+                        <filter id="deuteranopia">
+                                <feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0, 0.7, 0.3, 0, 0, 0, 0, 0.3, 0.7, 0, 0, 0, 0, 0, 1, 0"/>
+                        </filter>
+                        <filter id="tritanopia">
+                                <feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0, 0, 0.433, 0.567, 0, 0, 0, 0.475, 0.525, 0, 0, 0, 0, 0, 1, 0"/>
+                        </filter>
+                </defs>
+        </svg>
 </body>
 
 </html>

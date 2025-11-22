@@ -7,98 +7,304 @@
   <link rel="icon" href="/front/mídias/favicon.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/front/css/04_style.css">
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="/front/js/01_script.js"></script>
   <script src="/front/js/agendar.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <title>Agendar Horário</title>
-
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <title>Novo Agendamento</title>
 </head>
 
 <body>
-  <div class="container">
-    <h2>Selecione um horário</h2>
-
-    <!-- Seletor de data -->
-    <div class="date-selector">
-      <h3>Escolha a data:</h3>
-      <input type="date" id="data-agendamento" required>
-      <div id="data-selecionada" class="data-info"></div>
+  <div class="booking-container">
+    <!-- Stepper de Progresso -->
+    <div class="progress-stepper">
+      <div class="step active" data-step="1">
+        <div class="step-number">1</div>
+        <div class="step-label">Unidade</div>
+      </div>
+      <div class="step" data-step="2">
+        <div class="step-number">2</div>
+        <div class="step-label">Serviços</div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="step-number">3</div>
+        <div class="step-label">Duração</div>
+      </div>
+      <div class="step" data-step="4">
+        <div class="step-number">4</div>
+        <div class="step-label">Data e Hora</div>
+      </div>
+      <div class="step" data-step="5">
+        <div class="step-number">5</div>
+        <div class="step-label">Terapeuta</div>
+      </div>
+      <div class="step" data-step="6">
+        <div class="step-number">6</div>
+        <div class="step-label">Confirmação</div>
+      </div>
     </div>
 
-    <div class="actions">
-      <a class="btn" href="03_meusagendamentos.html">Voltar</a>
-      <button id="btn-confirmar">Confirmar seleção</button>
+    <!-- Conteúdo Principal -->
+    <div class="booking-content">
+      <!-- Passo 1: Seleção de Unidade -->
+      <div class="step-content active" id="step-1">
+        <h1>Escolha a Unidade</h1>
+        <p class="subtitle">Selecione onde você gostaria de ser atendido</p>
+        
+        <div class="units-grid">
+          <div class="unit-card" data-unit="golden" data-color="orange">
+            <div class="unit-icon orange">
+              <i class="fa fa-building"></i>
+            </div>
+            <div class="unit-name">Golden</div>
+            <div class="unit-address">Av. Paulista, 1000</div>
+          </div>
+
+          <div class="unit-card" data-unit="mooca" data-color="blue">
+            <div class="unit-icon blue">
+              <i class="fa fa-home"></i>
+            </div>
+            <div class="unit-name">Mooca</div>
+            <div class="unit-address">Rua da Mooca, 500</div>
+          </div>
+
+          <div class="unit-card" data-unit="grand-plaza" data-color="purple">
+            <div class="unit-icon purple">
+              <i class="fa fa-shopping-bag"></i>
+            </div>
+            <div class="unit-name">Grand Plaza</div>
+            <div class="unit-address">Shopping Grand Plaza</div>
+          </div>
+
+          <div class="unit-card" data-unit="west-plaza" data-color="green">
+            <div class="unit-icon green">
+              <i class="fa fa-shopping-bag"></i>
+            </div>
+            <div class="unit-name">West Plaza</div>
+            <div class="unit-address">Shopping West Plaza</div>
+          </div>
+        </div>
+
+        <div class="booking-actions">
+          <a href="03_meusagendamentos.html" class="btn-secondary">Voltar</a>
+          <button id="btn-next-1" class="btn-primary" disabled>Continuar</button>
+        </div>
+      </div>
+
+      <!-- Passo 2: Seleção de Serviços -->
+      <div class="step-content" id="step-2">
+        <h1>Escolha o Serviço</h1>
+        <p class="subtitle">Selecione o tipo de serviço desejado</p>
+        
+        <div class="services-grid">
+          <div class="service-card" data-service="quick-massage">
+            <div class="service-icon">
+              <i class="fa fa-hand-paper-o"></i>
+            </div>
+            <div class="service-name">Quick Massage</div>
+          </div>
+
+          <div class="service-card" data-service="maca">
+            <div class="service-icon">
+              <i class="fa fa-bed"></i>
+            </div>
+            <div class="service-name">Maca</div>
+          </div>
+
+          <div class="service-card" data-service="reflexologia">
+            <div class="service-icon">
+              <i class="fa fa-heart"></i>
+            </div>
+            <div class="service-name">Reflexologia Podal</div>
+          </div>
+
+          <div class="service-card" data-service="auriculoterapia">
+            <div class="service-icon">
+              <i class="fa fa-circle"></i>
+            </div>
+            <div class="service-name">Auriculoterapia</div>
+          </div>
+        </div>
+
+        <div class="booking-actions">
+          <button id="btn-back-2" class="btn-secondary">Voltar</button>
+          <button id="btn-next-2" class="btn-primary" disabled>Continuar</button>
+        </div>
+      </div>
+
+      <!-- Passo 3: Duração -->
+      <div class="step-content" id="step-3">
+        <h1>Escolha a Duração</h1>
+        <p class="subtitle">Selecione a duração da sessão</p>
+        
+        <div class="duration-grid" id="duration-grid">
+          <!-- Quick Massage -->
+          <div class="duration-card" data-duration="15" data-servico="quick">
+            <div class="duration-time">15 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          <div class="duration-card" data-duration="25" data-servico="quick">
+            <div class="duration-time">25 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          <div class="duration-card" data-duration="35" data-servico="quick">
+            <div class="duration-time">35 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          
+          <!-- Maca -->
+          <div class="duration-card" data-duration="30" data-servico="maca" style="display: none;">
+            <div class="duration-time">30 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          <div class="duration-card" data-duration="45" data-servico="maca" style="display: none;">
+            <div class="duration-time">45 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          <div class="duration-card" data-duration="60" data-servico="maca" style="display: none;">
+            <div class="duration-time">60 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          <div class="duration-card" data-duration="90" data-servico="maca" style="display: none;">
+            <div class="duration-time">90 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          
+          <!-- Reflexologia -->
+          <div class="duration-card" data-duration="20" data-servico="reflexologia" style="display: none;">
+            <div class="duration-time">20 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          <div class="duration-card" data-duration="30" data-servico="reflexologia" style="display: none;">
+            <div class="duration-time">30 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          <div class="duration-card" data-duration="40" data-servico="reflexologia" style="display: none;">
+            <div class="duration-time">40 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          <div class="duration-card" data-duration="60" data-servico="reflexologia" style="display: none;">
+            <div class="duration-time">60 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          
+          <!-- Auriculoterapia -->
+          <div class="duration-card" data-duration="10-20" data-servico="auriculoterapia" style="display: none;">
+            <div class="duration-time">10-20 min</div>
+            <div class="duration-label">Avulso</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+
+          <!-- Pacotes (disponíveis para todos) -->
+          <div class="duration-card" data-duration="pacote4" data-servico="all">
+            <div class="duration-time">Pacote 4</div>
+            <div class="duration-label">Sessões</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+          <div class="duration-card" data-duration="pacote8" data-servico="all">
+            <div class="duration-time">Pacote 8</div>
+            <div class="duration-label">Sessões</div>
+            <div class="duration-price" style="display: none; margin-top: 8px; font-weight: bold; color: #2e7d32; font-size: 1.1em;"></div>
+          </div>
+        </div>
+
+        <div class="booking-actions">
+          <button id="btn-back-3" class="btn-secondary">Voltar</button>
+          <button id="btn-next-3" class="btn-primary" disabled>Continuar</button>
+        </div>
+      </div>
+
+      <!-- Passo 4: Data e Hora -->
+      <div class="step-content" id="step-4">
+        <h1>Escolha Data e Hora</h1>
+        <p class="subtitle">Selecione quando você gostaria de ser atendido</p>
+        
+        <div class="date-time-selector">
+          <div class="date-selector">
+            <label for="data-agendamento">Data:</label>
+            <input type="date" id="data-agendamento" required>
+          </div>
+          
+          <div class="time-grid" id="time-grid">
+            <!-- Horários serão gerados dinamicamente -->
+          </div>
+        </div>
+
+        <div class="booking-actions">
+          <button id="btn-back-4" class="btn-secondary">Voltar</button>
+          <button id="btn-next-4" class="btn-primary" disabled>Continuar</button>
+        </div>
+      </div>
+
+      <!-- Passo 5: Terapeuta -->
+      <div class="step-content" id="step-5">
+        <h1>Escolha o Terapeuta</h1>
+        <p class="subtitle">Selecione o profissional que irá atendê-lo</p>
+        
+        <div class="therapist-grid" id="therapist-grid">
+          <!-- Terapeutas serão gerados dinamicamente -->
+        </div>
+
+        <div class="booking-actions">
+          <button id="btn-back-5" class="btn-secondary">Voltar</button>
+          <button id="btn-next-5" class="btn-primary" disabled>Continuar</button>
+        </div>
+      </div>
+
+      <!-- Passo 6: Confirmação -->
+      <div class="step-content" id="step-6">
+        <h1>Confirmação</h1>
+        <p class="subtitle">Revise os dados do seu agendamento</p>
+        
+        <div class="confirmation-card">
+          <div class="confirmation-item">
+            <span class="confirmation-label">Unidade:</span>
+            <span class="confirmation-value" id="confirm-unidade">-</span>
+          </div>
+          <div class="confirmation-item">
+            <span class="confirmation-label">Serviço:</span>
+            <span class="confirmation-value" id="confirm-servico">-</span>
+          </div>
+          <div class="confirmation-item">
+            <span class="confirmation-label">Duração:</span>
+            <span class="confirmation-value" id="confirm-duracao">-</span>
+          </div>
+          <div class="confirmation-item">
+            <span class="confirmation-label">Data:</span>
+            <span class="confirmation-value" id="confirm-data">-</span>
+          </div>
+          <div class="confirmation-item">
+            <span class="confirmation-label">Hora:</span>
+            <span class="confirmation-value" id="confirm-hora">-</span>
+          </div>
+          <div class="confirmation-item">
+            <span class="confirmation-label">Terapeuta:</span>
+            <span class="confirmation-value" id="confirm-terapeuta">-</span>
+          </div>
+          <div class="confirmation-item" style="border-top: 2px solid #8BC34A; padding-top: 15px; margin-top: 10px;">
+            <span class="confirmation-label" style="font-weight: bold; font-size: 1.1em;">Valor Total:</span>
+            <span class="confirmation-value" id="confirm-preco" style="font-weight: bold; font-size: 1.2em; color: #2e7d32;">-</span>
+          </div>
+        </div>
+
+        <div class="booking-actions">
+          <button id="btn-back-6" class="btn-secondary">Voltar</button>
+          <button id="btn-confirm" class="btn-primary">Confirmar Agendamento</button>
+        </div>
+      </div>
     </div>
-    <table id="grade" aria-label="Grade Horária">
-      <thead>
-        <tr>
-          <th>Hora</th>
-          <th>Seg</th>
-          <th>Ter</th>
-          <th>Qua</th>
-          <th>Qui</th>
-          <th>Sex</th>
-          <th>Sáb</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>09:00</th>
-          <td class="slot" data-dia="Seg" data-hora="09:00"></td>
-          <td class="slot" data-dia="Ter" data-hora="09:00"></td>
-          <td class="slot" data-dia="Qua" data-hora="09:00"></td>
-          <td class="slot" data-dia="Qui" data-hora="09:00"></td>
-          <td class="slot" data-dia="Sex" data-hora="09:00"></td>
-          <td class="slot" data-dia="Sáb" data-hora="09:00"></td>
-        </tr>
-        <tr>
-          <th>10:00</th>
-          <td class="slot" data-dia="Seg" data-hora="10:00"></td>
-          <td class="slot" data-dia="Ter" data-hora="10:00"></td>
-          <td class="slot" data-dia="Qua" data-hora="10:00"></td>
-          <td class="slot" data-dia="Qui" data-hora="10:00"></td>
-          <td class="slot" data-dia="Sex" data-hora="10:00"></td>
-          <td class="slot" data-dia="Sáb" data-hora="10:00"></td>
-        </tr>
-        <tr>
-          <th>11:00</th>
-          <td class="slot" data-dia="Seg" data-hora="11:00"></td>
-          <td class="slot" data-dia="Ter" data-hora="11:00"></td>
-          <td class="slot" data-dia="Qua" data-hora="11:00"></td>
-          <td class="slot" data-dia="Qui" data-hora="11:00"></td>
-          <td class="slot" data-dia="Sex" data-hora="11:00"></td>
-          <td class="slot" data-dia="Sáb" data-hora="11:00"></td>
-        </tr>
-        <tr>
-          <th>14:00</th>
-          <td class="slot" data-dia="Seg" data-hora="14:00"></td>
-          <td class="slot" data-dia="Ter" data-hora="14:00"></td>
-          <td class="slot" data-dia="Qua" data-hora="14:00"></td>
-          <td class="slot" data-dia="Qui" data-hora="14:00"></td>
-          <td class="slot" data-dia="Sex" data-hora="14:00"></td>
-          <td class="slot" data-dia="Sáb" data-hora="14:00"></td>
-        </tr>
-        <tr>
-          <th>15:00</th>
-          <td class="slot" data-dia="Seg" data-hora="15:00"></td>
-          <td class="slot" data-dia="Ter" data-hora="15:00"></td>
-          <td class="slot" data-dia="Qua" data-hora="15:00"></td>
-          <td class="slot" data-dia="Qui" data-hora="15:00"></td>
-          <td class="slot" data-dia="Sex" data-hora="15:00"></td>
-          <td class="slot" data-dia="Sáb" data-hora="15:00"></td>
-        </tr>
-        <tr>
-          <th>16:00</th>
-          <td class="slot" data-dia="Seg" data-hora="16:00"></td>
-          <td class="slot" data-dia="Ter" data-hora="16:00"></td>
-          <td class="slot" data-dia="Qua" data-hora="16:00"></td>
-          <td class="slot" data-dia="Qui" data-hora="16:00"></td>
-          <td class="slot" data-dia="Sex" data-hora="16:00"></td>
-          <td class="slot" data-dia="Sáb" data-hora="16:00"></td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 
   <!-- vlibras -->
@@ -108,5 +314,12 @@
       <div class="vw-plugin-top-wrapper"></div>
     </div>
   </div>
+
+  <script>
+    // Inicializar VLibras
+    if (window.VLibras && typeof window.VLibras.Widget === 'function') {
+      try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch {}
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+{
+  "name": "pi_rokuzen",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\"> Projeto Integrador Interdiciplinar em parceria com a Rokuzen </h1> \r <img width=\"666\" height=\"265\" margin-left=100px alt=\"logo rokuzen\" src=\"https://github.com/user-attachments/assets/a95c3c8c-3e6c-43f9-8112-a9875070126a\" />",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon front/js/backend.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adelejdg/PI_Rokuzen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/adelejdg/PI_Rokuzen/issues"
+  },
+  "homepage": "https://github.com/adelejdg/PI_Rokuzen#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "mongodb": "^7.0.0",
+    "mongoose": "^8.19.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}

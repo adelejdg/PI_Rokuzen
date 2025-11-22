@@ -22,12 +22,37 @@ O projeto pode ser acessado por qualquer um que clonar todo o repositorio em seu
 
 Para executar o projeto os passos principais são:
 
-1.clone o repositorio para uma pasta local
+1. Clone o repositorio para uma pasta local
 
-2.abra esse folder em seu vs code
+2. Abra esse folder em seu VS Code
 
-3.baixe a extensão do live server para conseguir abrir o site localmente
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-4.caso deseje o acesso ao banco de dados, tambem o abra em seu aplicativo MongoDB
+4. Configure o MongoDB Atlas:
+   - Crie um arquivo `.env` na raiz do projeto
+   - Copie o conteúdo do arquivo `.env.example` para o `.env`
+   - Substitua a string de conexão pela sua URI do MongoDB Atlas:
+     ```
+     MONGODB_URI=mongodb+srv://usuario:senha@cluster.mongodb.net/nome-do-banco?retryWrites=true&w=majority
+     ```
+   - **IMPORTANTE**: Nunca compartilhe seu arquivo `.env` ou faça commit dele no Git!
 
-5.selecione Go Live no canto inferior direito em seu vs code
+5. Inicie o servidor backend:
+   ```bash
+   npm start
+   ```
+
+6. (Opcional) Inicialize os atendentes padrão no banco de dados:
+   - Com o servidor rodando, faça uma requisição POST para `http://localhost:3000/atendentes/init`
+   - Você pode usar o Postman, Insomnia, ou executar no terminal:
+     ```bash
+     curl -X POST http://localhost:3000/atendentes/init
+     ```
+   - Isso criará 10 atendentes padrão distribuídos entre as unidades
+
+7. Para o frontend, baixe a extensão do Live Server no VS Code
+
+8. Selecione "Go Live" no canto inferior direito do VS Code para abrir o site localmente

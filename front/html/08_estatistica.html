@@ -7,8 +7,24 @@
   <link rel="icon" href="/front/mídias/favicon.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/front/css/08_style.css">
-  <link rel="stylesheet" href="/front/js/estatisticaa.js">
+  <script src="/front/js/01_script.js"></script>
   <title>Estatísticas</title>
+  <script>
+    // Controle de acesso
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!isUserLoggedIn()) {
+        alert('Você precisa estar logado para acessar esta página.');
+        window.location.href = '/front/html/01_index.html';
+        return;
+      }
+      
+      if (!canAccessEstatisticas()) {
+        alert('Você não tem permissão para acessar esta página. Apenas administradores podem acessar.');
+        window.location.href = '/front/html/01_index.html';
+        return;
+      }
+    });
+  </script>
 </head>
 
 <body>
@@ -36,8 +52,8 @@
     </div>
 
     <div class="chart-card">
-      <h3>Rendimento mensal</h3>
-      <canvas id="chartRendimento" aria-label="Gráfico de rendimento mensal" role="img"></canvas>
+      <h3>Agendamentos por mês</h3>
+      <canvas id="chartRendimento" aria-label="Gráfico de agendamentos por mês" role="img"></canvas>
     </div>
 
     <div style="text-align:center; margin-top: 16px;">
@@ -46,7 +62,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="js/estatisticas.js"></script>
+  <script src="/front/js/estatisticaa.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

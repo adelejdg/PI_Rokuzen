@@ -1,7 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #e6f5e6;
-    padding: 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
 /* Bootstrap responsive adjustments */
@@ -15,13 +17,25 @@ body {
     }
 }
 
-.container {
+.report-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.report-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.report-header h2 { color: #1B5E20; margin: 0 0 8px 0; }
+.subtitle { font-size: 16px; color: #666; margin: 0; }
+
+.report-content {
     background: #fff;
-    max-width: 700px;
-    margin: auto;
-    padding: 24px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 h2 {
@@ -29,46 +43,25 @@ h2 {
     margin: 0 0 16px 0;
 }
 
-label {
-    display: block;
-    margin-top: 12px;
-    font-weight: 600;
-}
+label { display: block; margin-top: 12px; font-weight: 600; }
 
-input,
-textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-}
+input, textarea { width: 100%; padding: 12px 16px; border: 2px solid #e0e0e0; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+input:focus, textarea:focus { outline: none; border-color: #8BC34A; box-shadow: 0 0 0 3px rgba(139,195,74,0.15); }
 
 textarea {
     min-height: 90px;
 }
 
-.actions {
-    margin-top: 16px;
-    display: flex;
-    gap: 8px;
-}
+.actions { margin-top: 20px; display: flex; gap: 12px; }
 
-button {
-    padding: 10px 14px;
-    background: #d6edc2;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-}
+button { padding: 12px 24px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; }
+.btn-primary { background: #8BC34A; color: #fff; }
+.btn-primary:hover { background: #7CB342; box-shadow: 0 4px 12px rgba(139,195,74,0.3); }
+.btn-secondary { background: #f5f5f5; color: #666; }
+.btn-secondary:hover { background: #e0e0e0; }
 
 button:hover {
     background: #c3e6ac;
 }
 
-.finished {
-    text-decoration: line-through;
-    color: #777;
-    margin-top: 16px;
-}
+.finished { text-decoration: line-through; color: #777; margin-top: 16px; }

@@ -1,26 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: white;
-    padding: 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
     margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
 h2 {
     text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: 700;
 }
 
 .charts-row {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 24px;
+    margin-bottom: 24px;
 }
 
 @media (min-width: 900px) {
@@ -30,42 +34,78 @@ h2 {
 }
 
 .chart-card {
-    border: 1px solid #cfe6c5;
-    border-radius: 8px;
-    padding: 12px;
-    background: #f9fff5;
+    background: #ffffff;
+    border: none;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
 .chart-card h3 {
-    margin: 8px 0 12px;
+    margin: 0 0 24px 0;
     color: #2e7d32;
     text-align: center;
+    font-size: 20px;
+    font-weight: 700;
 }
 
-/* Evitar crescimento: canvas com altura fixa controlada por CSS */
+/* Canvas com altura controlada */
 .chart-card canvas {
     width: 100% !important;
-    height: 280px !important;
+    height: 320px !important;
     display: block;
 }
 
 /* Rendimento pode ser um pouco maior */
 #chartRendimento {
-    height: 360px !important;
+    height: 400px !important;
 }
 
 button {
     margin-top: 20px;
-    padding: 8px 14px;
-    background-color: #d6edc2;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #8BC34A 0%, #7CB342 100%);
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(139, 195, 74, 0.3);
 }
 
 button:hover {
-    background-color: #c3e6ac;
+    background: linear-gradient(135deg, #7CB342 0%, #689F38 100%);
+    box-shadow: 0 6px 16px rgba(139, 195, 74, 0.4);
+    transform: translateY(-2px);
 }
 
+/* Responsivo */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 10px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .chart-card {
+        padding: 20px;
+    }
+
+    .chart-card canvas {
+        height: 250px !important;
+    }
+
+    #chartRendimento {
+        height: 300px !important;
+    }
+}

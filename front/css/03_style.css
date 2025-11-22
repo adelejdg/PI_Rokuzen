@@ -1,84 +1,539 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: white;
-    padding: 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.bookings-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.bookings-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bookings-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #666;
     margin: 0;
 }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 16px;
+.bookings-content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Controles Modernos */
+.week-controls-modern {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.unit-filter-container {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 8px 16px;
+    border-radius: 12px;
+}
+
+.unit-filter-select {
+    padding: 8px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+}
+
+.unit-filter-select:hover {
+    border-color: #8BC34A;
+}
+
+.unit-filter-select:focus {
+    outline: none;
+    border-color: #8BC34A;
+    box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.1);
+}
+
+.week-navigation {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #f8f9fa;
+    padding: 8px 16px;
+    border-radius: 12px;
+}
+
+.week-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    min-width: 200px;
     text-align: center;
 }
 
-/* Bootstrap responsive adjustments */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    
-    .container {
-        padding: 15px;
-    }
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    background: #fff;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
-h2 {
-    color: #333;
-    margin-bottom: 20px;
+.btn-icon:hover {
+    border-color: #8BC34A;
+    color: #8BC34A;
+    background: #f1f8e9;
+}
+
+.btn-modern {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: #8BC34A;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #7CB342;
+    box-shadow: 0 4px 12px rgba(139, 195, 74, 0.3);
+}
+
+.btn-secondary {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+.btn-secondary.active {
+    background: #ef9a9a;
+    color: #fff;
+}
+
+.btn-secondary.active:hover {
+    background: #e57373;
+}
+
+/* Grade Semanal */
+.week-grid-wrapper {
+    overflow-x: auto;
+    margin-bottom: 32px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 2px solid #2e7d32;
 }
 
 #week-grid {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #2e7d32;
 }
 
-#week-grid th, #week-grid td {
-    border: 1px solid #cfe6c5;
-    padding: 8px;
-    text-align: center;
+#week-grid thead {
+    background: #2e7d32;
 }
 
 #week-grid th {
-    background: #f4fbef;
-    color: #2e7d32;
+    padding: 16px 12px;
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+    border: 2px solid #1b5e20;
+    position: relative;
+    background: #2e7d32;
+}
+
+#week-grid th:first-child {
+    background: #2e7d32;
+    font-weight: 700;
+}
+
+#week-grid tbody tr {
+    transition: background 0.2s ease;
+}
+
+#week-grid tbody tr:hover {
+    background: #f8f9fa;
+}
+
+#week-grid tbody th {
+    background: #2e7d32;
+    color: #fff;
+    font-weight: 600;
+    padding: 16px 12px;
+    border-right: 2px solid #1b5e20;
+    border-bottom: 2px solid #1b5e20;
+}
+
+#week-grid td {
+    padding: 12px;
+    text-align: center;
+    border: 2px solid #2e7d32;
+    vertical-align: middle;
+    min-height: 60px;
+    transition: all 0.2s ease;
 }
 
 .slot-free {
-    background: #ffffff;
+    background: #8BC34A;
     cursor: pointer;
+    position: relative;
+    min-height: 40px;
+}
+
+.slot-free:hover {
+    background: #7CB342;
+    transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba(139, 195, 74, 0.2);
 }
 
 .slot-busy {
-    background: #ef9a9a;
-    color: #222;
+    background: #ffffff;
+    color: #1a1a1a;
     font-weight: 600;
     cursor: pointer;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px;
+    position: relative;
+    transition: all 0.2s ease;
+    min-height: 40px;
 }
 
-.week-controls #delete-mode.active {
-    background-color: #ef9a9a;
+.slot-busy:hover {
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.hidden { display: none; }
+.slot-busy.delete-mode {
+    background: #757575;
+    color: #fff;
+    border-color: #616161;
+    animation: pulse 1s infinite;
+}
 
-#detalhes-agendamento {
-    margin-top: 12px;
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.slot-busy .booking-info {
+    font-size: 12px;
+    line-height: 1.4;
+    display: block;
+    color: #1a1a1a;
+}
+
+.slot-busy .booking-name {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+}
+
+.slot-busy .booking-service {
+    font-size: 11px;
+    opacity: 0.9;
+    color: #1a1a1a;
+}
+
+.slot-busy .booking-name {
+    color: #1a1a1a;
+}
+
+.slot-menu-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #666;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.slot-menu-btn:hover {
+    background: #f0f0f0;
+    color: #1a1a1a;
+}
+
+.slot-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 120px;
+    overflow: hidden;
+}
+
+.menu-item {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
     text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: #1a1a1a;
+    transition: background 0.2s ease;
 }
 
-button {
-    margin-top: 20px;
-    padding: 8px 14px;
-    background-color: #d6edc2;
+.menu-item:hover {
+    background: #f5f5f5;
+}
+
+.menu-item.delete {
+    color: #f44336;
+}
+
+.menu-item.delete:hover {
+    background: #ffebee;
+}
+
+/* Seção de Sessões */
+.sessions-section {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 2px solid #e0e0e0;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 24px 0;
+}
+
+.sessions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.agendamento-item {
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.agendamento-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #8BC34A;
+}
+
+.agendamento-item > div {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #1a1a1a;
+}
+
+.agendamento-item > div:last-child {
+    margin-bottom: 0;
+}
+
+.agendamento-item strong {
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+.btn-timer {
+    padding: 8px 16px;
+    background: #8BC34A;
+    color: #fff;
     border: none;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
     font-size: 14px;
 }
 
-button:hover {
-    background-color: #c3e6ac;
+.btn-timer:hover {
+    background: #7CB342;
+    box-shadow: 0 4px 12px rgba(139, 195, 74, 0.3);
+}
+
+.timer-display {
+    margin-left: 12px;
+    font-weight: 700;
+    color: #8BC34A;
+    font-size: 16px;
+}
+
+/* Detalhes do Agendamento */
+.booking-details {
+    background: linear-gradient(135deg, #f8f9fa 0%, #f1f8e9 100%);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 32px;
+    border-left: 4px solid #8BC34A;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.booking-details h3 {
+    margin: 0 0 20px 0;
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.detail-item {
+    margin: 12px 0;
+    color: #1a1a1a;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.detail-item strong {
+    color: #2e7d32;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* Ações */
+.bookings-actions {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .bookings-container {
+        padding: 20px 10px;
+    }
+
+    .bookings-content {
+        padding: 24px;
+    }
+
+    .bookings-header h1 {
+        font-size: 28px;
+    }
+
+    .week-controls-modern {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .week-navigation {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .week-label {
+        min-width: auto;
+        flex: 1;
+    }
+
+    .btn-modern {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-text {
+        display: inline;
+    }
+
+    #week-grid {
+        font-size: 12px;
+    }
+
+    #week-grid th,
+    #week-grid td {
+        padding: 8px 4px;
+    }
+
+    .sessions-list {
+        grid-template-columns: 1fr;
+    }
+
+    .slot-busy .booking-info {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .week-label {
+        font-size: 12px;
+    }
+
+    .btn-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    #week-grid {
+        font-size: 10px;
+    }
+
+    #week-grid th,
+    #week-grid td {
+        padding: 6px 2px;
+    }
 }

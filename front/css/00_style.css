@@ -1,4 +1,4 @@
- /* remover classes desnecessárias dps */
+/* remover classes desnecessárias dps */
  /* deixar responsivo com @media dps */
  /* colocar máscara p/ celular e de e-mail válido nos formulários de cadastro e login */
  * h3 {
@@ -8,7 +8,7 @@
  }
 
  body {
-    background-color: #690061;
+    background-color: #ffffff;
     margin: auto;
     font-family: system-ui;
     height: 100%;
@@ -26,7 +26,7 @@ header {
     height: 150px; 
     padding-top: 15px;
     margin: auto; 
-    margin-top: 10px; 
+    margin-top: 0; 
     display: inline-flex;
     position: relative;
 }
@@ -36,18 +36,66 @@ header {
 }
 
 .nav-item {
-    margin: 35px 40px 0 0;
+    margin: 35px 50px 0 0;
+    font-size: 22px;
+    line-height: 1.4;
+    display: inline-block;
+    vertical-align: top;
 }
 
 nav {
     /* padding-left: 10px; */
     font-weight: 550;
     width: 100%;
+    font-size: 22px;
 }
 .nav-top {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+#header-pesquisa {
+    display: flex;
+    align-items: center;
+}
+
+#header-pesquisa form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#header-pesquisa input[type="text"] {
+    padding: 8px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    min-width: 200px;
+}
+
+#header-pesquisa button {
+    padding: 8px 12px;
+    background: #8BC34A;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#header-pesquisa button:hover {
+    background: #7CB342;
+}
+
+.social-icons-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
 }
 
 @media (max-width: 768px) {
@@ -75,17 +123,25 @@ nav {
     #header-pesquisa input[type="text"] {
         width: 160px;
     }
+    
+    .dropdown-conteudo {
+        right: 0;
+        left: auto;
+        max-width: calc(100vw - 20px);
+    }
 }
 
 nav span a {   
     text-decoration: none;
     color: yellowgreen;
+    font-size: 22px;
 }
 
 nav span {
     display: flex;
     flex-wrap: wrap;
     margin-left: 10px;
+    margin-top: 0;
 }
 
 nav a:hover {
@@ -93,40 +149,147 @@ nav a:hover {
 }
 
 #icones {
-    width: 400px;
-    margin-top: 15px;
+    margin-top: 0;
 }
 
 #icones a {
-    margin-left: 10px;
+    margin-left: 0;
 }
 
 #icones img {
-    width: 6%;
-    height: 6%;
+    width: 24px;
+    height: 24px;
 }
 
 /*dropdown ///////////////////////////////////////////////////////////////////////////////////////*/
 .dropdown {
     position: relative;
+    font-size: 22px;
 }
 
 .dropdown-conteudo {
-    display: none;
+    display: none !important; /* Força que fique escondido por padrão */
     position: absolute;
     background-color: #ffffff;
-    min-width: 200px;
-    box-shadow: 0px 4px 8px 0px rgba(10, 71, 15, 0.3);
-    padding: 10px;
+    min-width: 240px;
+    max-width: 280px;
+    box-shadow: 0px 6px 16px 0px rgba(10, 71, 15, 0.25);
+    padding: 12px 12px;
     z-index: 3000;
-    overflow-wrap: anywhere; /*?*/
-    border-radius: 5px;
-    line-height: 30px;
+    overflow-wrap: anywhere;
+    border-radius: 8px;
+    line-height: 1.4;
+    margin-top: 8px;
+    border: 1px solid #e0e0e0;
+    right: 0;
+    left: auto;
+}
+
+.dropdown-conteudo a {
+    display: block;
+    padding: 4px 12px;
+    color: #2e7d32;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.dropdown-conteudo a:hover {
+    background-color: #f5f5f5;
+    color: #1b5e20;
+    padding-left: 16px;
+}
+
+.dropdown-conteudo a i {
+    margin-right: 8px;
+    color: #8BC34A;
+}
+
+.dropdown-conteudo p {
+    margin: 8px 0;
+    padding: 0 12px;
+    font-size: 16px;
+    color: #666;
+}
+
+.acesso-logado {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 6px;
+    padding-top: 6px;
+}
+
+.acesso-logado p {
+    padding: 4px 12px;
+    font-weight: 600;
+    color: #6a1b9a !important;
+    margin-bottom: 2px !important;
+    font-size: 18px;
+}
+
+.acesso-logado a {
+    display: block;
+    padding: 4px 12px;
+    color: #2e7d32;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    margin-bottom: 0;
+}
+
+.acesso-logado a:hover {
+    background-color: #f5f5f5;
+    color: #1b5e20;
+}
+
+#header-greeting {
+    font-size: 18px !important;
+    font-weight: 600;
+}
+
+#btn-logout {
+    font-size: 18px !important;
 }
 
 
 .dropdown:hover .dropdown-conteudo {
     display: block;
+}
+
+/* Força que dropdowns com classe no-hover NUNCA abram no hover */
+.dropdown.no-hover:hover .dropdown-conteudo {
+    display: none !important;
+}
+
+/* Força que dropdowns com classe no-hover só abram quando is-open estiver presente */
+.dropdown.no-hover .dropdown-conteudo {
+    display: none !important;
+}
+
+.dropdown.no-hover.is-open .dropdown-conteudo {
+    display: block !important; /* Força que abra apenas quando a classe is-open estiver presente */
+}
+
+.dropdown.no-hover, #btn-minha-conta {
+    cursor: pointer;
+}
+
+#btn-minha-conta {
+    display: inline-block;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    vertical-align: top;
+}
+
+#dropdown-account {
+    display: inline-block;
+    padding: 0;
+    vertical-align: top;
 }
 
 .area-de-cadastro {
@@ -784,4 +947,181 @@ footer h3 {
     border-radius: 999px;
     padding: 8px 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Widget de Acessibilidade para Daltônicos ////////////////////////////////////////////////////////////////////////////*/
+.acessibilidade-widget {
+    position: fixed;
+    right: 20px;
+    bottom: 180px;
+    z-index: 6000;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+@media (max-width: 768px) {
+    .acessibilidade-widget {
+        right: 12px;
+        bottom: 160px;
+    }
+    
+    .acessibilidade-panel {
+        right: 0;
+        width: calc(100vw - 24px);
+        max-width: 320px;
+    }
+}
+
+.acessibilidade-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8BC34A 0%, #689F38 100%);
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acessibilidade-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #9CCC65 0%, #7CB342 100%);
+}
+
+.acessibilidade-panel {
+    position: absolute;
+    right: 0;
+    bottom: 70px;
+    width: 320px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.acessibilidade-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: #f5f7f4;
+    border-bottom: 1px solid #e6e9e4;
+}
+
+.acessibilidade-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #1B5E20;
+    font-weight: 600;
+}
+
+.acessibilidade-close {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.acessibilidade-close:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.acessibilidade-body {
+    padding: 16px;
+}
+
+.acessibilidade-label {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+}
+
+.acessibilidade-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.acessibilidade-option {
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #333;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.acessibilidade-option:hover {
+    border-color: #8BC34A;
+    background: #f1f8e9;
+    color: #1B5E20;
+}
+
+.acessibilidade-option.active {
+    border-color: #8BC34A;
+    background: #8BC34A;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Filtros de acessibilidade */
+body.filter-protanopia {
+    filter: url(#protanopia);
+}
+
+body.filter-deuteranopia {
+    filter: url(#deuteranopia);
+}
+
+body.filter-tritanopia {
+    filter: url(#tritanopia);
+}
+
+body.filter-high-contrast {
+    filter: contrast(1.5) brightness(1.1);
+}
+
+body.filter-grayscale {
+    filter: grayscale(100%);
+}
+
+/* SVG Filters para tipos de daltonismo */
+.acessibilidade-filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
 }
